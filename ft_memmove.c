@@ -1,48 +1,48 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 18:07:52 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/16 18:10:41 by psanguna         ###   ########.fr       */
+/*   Created: 2024/03/18 16:08:36 by psanguna          #+#    #+#             */
+/*   Updated: 2024/03/18 16:36:22 by psanguna         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
-
+/* ************************************************************************** */
 #include <unistd.h>
 #include <string.h>
+#include <stddef.h>
 
 /*
-function is used to copy a block of memory from one location to another. 
+It copies n bytes from location pointed by src to the memory block pointed dest.
 It handles overlapping memory blocks correctly, meaning it ensures that 
 the copying is done safely even if the source and destination memory regions 
 overlap
- */
-void	ft_memmove(void *dest, void *src, int num)
+*/
+void	ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	*d;
-	int		i;
+	size_t	i;
 	char	*s;
 
 	d = (char *)dest;
 	s = (char *)src;
-	if (s < d && s + num > d)
+	if (s < d && s + n > d)
 	{
-		s += num;
-		d += num;
-		while (num)
+		s += n;
+		d += n;
+		while (n)
 		{
 			*--d = *--s;
-			num--;
+			n--;
 		}
 	}
 	else
 	{
-		while (num)
+		while (n)
 		{
 			*d++ = *s++;
-			num--;
+			n--;
 		}
 	}
 }
@@ -50,10 +50,13 @@ void	ft_memmove(void *dest, void *src, int num)
 int	main(void)
 {
 	char	dest[20] = "Hello, world";
-	char	src[20] = "Goodbye";
+	const char	src[20] = "Goodbye";
+	//char	str[] = "memmove can be very useful...";
 
-	ft_memmove(dest, src, 6);
-	//memmove(dest, src, 6);
+	//ft_memmove(dest+5, dest+7, 5);
+	write(1,dest,sizeof(dest));
+	write(1, "\n", 1);
+	memmove(dest+5, dest+7, 5);
 	write(1, dest, sizeof(dest));
 	return (0);
 }

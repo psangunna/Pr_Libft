@@ -1,31 +1,31 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 19:29:59 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/18 11:05:04 by psanguna         ###   ########.fr       */
+/*   Created: 2024/03/18 16:02:17 by psanguna          #+#    #+#             */
+/*   Updated: 2024/03/18 16:07:44 by psanguna         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
-
+/* ************************************************************************** */
+#include <stddef.h>
 #include <unistd.h>
 #include <string.h>
 /*
-function is used to copy a block of memory from one location to another.
-It stands for "memory copy"
+It copies the values of n bytes from the location pointed to by
+src directly to the memory block pointed to by dest.
 */
-void	ft_memcpy(void *dest, void *src, int num)
+void	ft_memcpy(void *dest, void *src, size_t n)
 {
 	unsigned char	*d;
-	int				i;
+	size_t			i;
 	unsigned char	*s;
 
 	d = dest;
 	i = 0;
 	s = src;
-	while (i <num)
+	while (i < n)
 	{
 		d[i] = s[i];
 		i++;
@@ -39,7 +39,8 @@ int	main(void)
 
 	ft_memcpy(dest, src, sizeof(src));
 	write(1, dest, sizeof(dest));
-	//memcpy(dest, src, sizeof(src));
-	//write(1, dest, sizeof(dest));
+	write(1, "\n", 1);
+	memcpy(dest, src, sizeof(src));
+	write(1, dest, sizeof(dest));
 	return (0);
 }

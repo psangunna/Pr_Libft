@@ -1,31 +1,32 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 19:33:23 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/16 18:10:10 by psanguna         ###   ########.fr       */
+/*   Created: 2024/03/18 13:50:42 by psanguna          #+#    #+#             */
+/*   Updated: 2024/03/18 15:59:14 by psanguna         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
-
+/* ************************************************************************** */
 #include <unistd.h>
 #include <string.h>
+#include <stddef.h>
 
 /*
-function is used to fill a block (size) of memory with a particular value.
+function fills ptr with value of c. 
+The value of c is copied as times as n indicates.
 */
-void	*ft_memset(void *ptr, int value, int num)
+void	*ft_memset(void *ptr, int c, size_t n)
 {
 	unsigned char	*p;
-	int				i;
+	size_t			i;
 
 	p = ptr;
 	i = 0;
-	while (i < num)
+	while (i < n)
 	{
-		p[i] = (unsigned char)value;
+		p[i] = (unsigned char)c;
 		i++;
 	}
 }
@@ -34,9 +35,10 @@ int	main(void)
 {
 	char	buffer[20];
 
-	ft_memset(buffer, 0xABABABAB, sizeof(buffer));
+	ft_memset(buffer, 'F', sizeof(buffer));
 	write(1, buffer, sizeof(buffer));
-	//memset(buffer, 0xABABABAB, sizeof(buffer));
-	//write(1, buffer, sizeof(buffer));
+	write(1, "\n", 1);
+	memset(buffer, 'D', sizeof(buffer));
+	write(1, buffer, sizeof(buffer));
 	return (0);
 }
