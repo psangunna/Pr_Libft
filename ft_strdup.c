@@ -3,40 +3,47 @@
 #include <stdlib.h>
 #include <string.h>
 
-static int	ft_strlen(char *str)
+/*
+It gets the number of characters of the sring
+*/
+static size_t	ft_strlen(const char *str)
 {
-	int	counter;
+	size_t	counter;
+	char	*str_aux;
 
 	counter = 0;
-	while (*str != '\0')
+	str_aux = (char *)str;
+	while (*str_aux != '\0')
 	{
-		str++;
+		str_aux++;
 		counter++;
 	}
 	return (counter);
 }
 
-static char	*ft_strcpy(char *dest, char *src)
+static char	*ft_strcpy(char *dest, const char *src)
 {
+	char	*src_aux;
 	char	*dest_aux;
 
 	dest_aux = dest;
-	while (*src != '\0')
+	src_aux = (char *)src;
+	while (*src_aux != '\0')
 	{
-		*dest = *src;
-		dest++;
-		src++;
+		*dest_aux = *src_aux;
+		dest_aux++;
+		src_aux++;
 	}
-	*dest = '\0';
-	return (dest_aux);
+	*dest_aux = '\0';
+	return (dest);
 }
+
 /*
 function duplicates a string. It dynamically allocates memory for a new string, 
 copies the content of the input string into the allocated memory, 
 and returns a pointer to the new string.
 */
-
-char	*ft_strdup(char *str)
+char	*ft_strdup(const char *str)
 {
 	unsigned int	len;
 	char			*new_str;
@@ -49,15 +56,16 @@ char	*ft_strdup(char *str)
 	}
 	return (new_str);
 }
-/*int	main(void)
+
+int	main(void)
 {
 	char *original;
 	char *duplicate;
 
 	original = "Hello, world!";
     // Duplicate the string
-    duplicate = strdup(original);
-    //duplicate = ft_strdup(original);
+    //duplicate = strdup(original);
+    duplicate = ft_strdup(original);
     if (duplicate != NULL) {
         printf("Original: %s\n", original);
         printf("Duplicate: %s\n", duplicate);
@@ -68,4 +76,4 @@ char	*ft_strdup(char *str)
         printf("Memory allocation failed.\n");
     }
 	return (0);
-}*/
+}

@@ -1,31 +1,36 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
-static void	*ft_memset(void *ptr, int value, int num)
+/*
+function fills str with value of c. 
+The value of c is copied as times as n indicates.
+*/
+static void	*ft_memset(void *ptr, int c, size_t n)
 {
 	unsigned char	*p;
-	int				i;
+	size_t			i;
 
 	p = ptr;
 	i = 0;
-	while (i < num)
+	while (i < n)
 	{
-		p[i] = (unsigned char)value;
+		p[i] = (unsigned char)c;
 		i++;
 	}
 }
+
 /*
 function dynamically allocates memory for an array of elements and 
 initializes them to zero.
 nelem − This is the number of elements to be allocated.
 elsize − This is the size of elements.
 */
-
-void	*ft_calloc(unsigned int nelem, unsigned int elsize)
+void	*ft_calloc(size_t nelem, size_t elsize)
 {
-	unsigned int	total_size;
-	void			*ptr;
+	size_t	total_size;
+	void	*ptr;
 
 	total_size = nelem * elsize;
 	ptr = malloc(total_size);
@@ -43,8 +48,8 @@ int	main(void)
 
 	n = 5;
     // Allocate memory for array of 5 integers
-    //arr = (int *)ft_calloc(n, sizeof(int));
-	arr = (int *)calloc(n, sizeof(int));
+    arr = (int *)ft_calloc(n, sizeof(int));
+	//arr = (int *)calloc(n, sizeof(int));
     if (arr == NULL)
 	{
         printf("Memory allocation failed\n");
@@ -62,6 +67,5 @@ int	main(void)
     printf("\n");
 
     free(arr); // Free allocated memory
-
     return (0);
 }
