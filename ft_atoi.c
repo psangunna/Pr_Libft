@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	sig;
 	int	i;
@@ -27,14 +27,15 @@ int	ft_atoi(char *str)
 	}
 	return (sig * r);
 }
-/*int	main(void)
+
+int	main(void)
 {
 	char	*digit;
 	int		resultado;
 
-	digit = "\n\t+1234yt";
+	digit = "\n\t-1234yt";
 	resultado = ft_atoi(digit);
 	//resultado = ft_atoi(digit);
 	printf("%i", resultado);
 	return (0);
-}*/
+}

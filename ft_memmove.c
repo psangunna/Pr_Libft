@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
@@ -6,9 +6,10 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 16:08:36 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/18 16:36:22 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:42:57 by psanguna         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
+
 #include <unistd.h>
 #include <string.h>
 #include <stddef.h>
@@ -53,10 +54,10 @@ int	main(void)
 	const char	src[20] = "Goodbye";
 	//char	str[] = "memmove can be very useful...";
 
-	//ft_memmove(dest+5, dest+7, 5);
+	ft_memmove(dest+5, dest+7, 5);
 	write(1,dest,sizeof(dest));
 	write(1, "\n", 1);
-	memmove(dest+5, dest+7, 5);
-	write(1, dest, sizeof(dest));
+	//memmove(dest+5, dest+7, 5);
+	//write(1, dest, sizeof(dest));
 	return (0);
 }

@@ -1,18 +1,19 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+#include <stddef.h>
 /*
-function scans the initial n bytes of the memory area pointed to by s 
+function scans the initial n bytes of the memory area pointed to by ptr
 for the first instance of c. Both c and the bytes of the memory area pointed
 to by s are interpreted as unsigned char.
 */
-void	*ft_memchr(void *s, int c, unsigned int n)
+void	*ft_memchr(const void *ptr, int c, size_t n)
 {
 	unsigned char	*p;
-	unsigned int	i;
+	size_t			i;
 	void			*result;
 
-	p = s;
+	p = (unsigned char *)ptr;
 	i = 0;
 	while (i < n)
 	{
@@ -35,6 +36,7 @@ int	main(void)
 
     byte = 'l';
     length = 4;
+	//The byte 'l' is searched for in the first 4 bytes of the string
     result = ft_memchr(str, byte, length);
 	//result = memchr(str, byte, length);
     printf("%s", result);

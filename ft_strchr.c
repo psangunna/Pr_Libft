@@ -8,19 +8,24 @@ It returns a pointer to the first occurrence of the character if found, or
 a pointer to the null terminator if the character is '\0' (the null terminator).
 If the character is not found, it returns NULL
 */
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(const char *str, int c)
 {
-	while (*s != '\0')
+	char	*str_aux;
+	char	char_c;
+
+	str_aux = (char *)str;
+	char_c = (char)c;
+	while (*str_aux != '\0')
 	{
-		if (*s == c)
+		if (*str_aux == char_c)
 		{
-			return (s);
+			return (str_aux);
 		}
-		s++;
+		str_aux++;
 	}
-	if (c == '\0')
+	if (char_c == '\0')
 	{
-		return (s);
+		return (str_aux);
 	}
 	return (0);
 }
@@ -31,7 +36,7 @@ int	main(void)
     int character;
 	char *result;
 
-    character = 'm';
+    character = ',';
 	result = ft_strchr(str, character);
    	printf("%s", result);
 	
