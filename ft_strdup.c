@@ -48,8 +48,10 @@ char	*ft_strdup(const char *str)
 	unsigned int	len;
 	char			*new_str;
 
+	if (str == '\0')
+		return (0);
 	len = ft_strlen(str) + 1;
-	new_str = malloc(len);
+	new_str = (char *)malloc(len * sizeof(char));
 	if (new_str != '\0')
 	{
 		ft_strcpy(new_str, str);

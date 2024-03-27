@@ -1,4 +1,7 @@
+#include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
+
 /*
 function iterates over each character of the string s and applies a given 
 function f to each character. The function f is passed two arguments: 

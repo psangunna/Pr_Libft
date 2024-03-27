@@ -1,5 +1,38 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
+
+static size_t	ft_strlen(const char *str)
+{
+	size_t	counter;
+	char	*str_aux;
+
+	counter = 0;
+	str_aux = (char *)str;
+	while (*str_aux != '\0')
+	{
+		str_aux++;
+		counter++;
+	}
+	return (counter);
+}
+
+static void	ft_memcpy(void *dest, void *src, size_t n)
+{
+	unsigned char	*d;
+	size_t			i;
+	unsigned char	*s;
+
+	d = dest;
+	i = 0;
+	s = src;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+}
+
 /*
 function takes a string s and applies a given function f to each character 
 of the string.The function f is passed two arguments: the index of the character 
@@ -14,19 +47,18 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (s == '\0' || f == '\0')
 		return (0);
-	len = 0;
-	while (s[len] != '\0')
-		len++;
+	len = ft_strlen(s);
 	result = (char *)malloc((len + 1) * sizeof(char));
 	if (result == '\0')
 		return (0);
-	i = 0;
+	ft_memcpy(result, (void *)s, len);
+	/*i = 0;
 	while (s[i] != '\0')
 	{
 		result[i] = f(i, s[i]);
 		i++;
-	}
-	result[i] = '\0';
+	}*/
+	result[len] = '\0';
 	return (result);
 }
 

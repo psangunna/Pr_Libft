@@ -9,14 +9,8 @@
 /*   Updated: 2024/03/19 16:21:12 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
+#include "libft.h"
 
-#include <string.h>
-#include <stddef.h>
-
-/*
-function fills str with value of c. 
-The value of c is copied as times as n indicates.
-*/
 void	*ft_memset(void *ptr, int c, size_t n)
 {
 	unsigned char	*p;
@@ -29,16 +23,5 @@ void	*ft_memset(void *ptr, int c, size_t n)
 		p[i] = (unsigned char)c;
 		i++;
 	}
-}
-
-int	main(void)
-{
-	char	buffer[20];
-
-	ft_memset(buffer, 'F', sizeof(buffer));
-	write(1, buffer, sizeof(buffer));
-	write(1, "\n", 1);
-	memset(buffer, 'D', sizeof(buffer));
-	write(1, buffer, sizeof(buffer));
-	return (0);
+	return (ptr);
 }

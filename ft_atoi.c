@@ -1,6 +1,3 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 int	ft_atoi(const char *str)
 {
@@ -26,16 +23,4 @@ int	ft_atoi(const char *str)
 		r = r * 10 + (str[i++] - '0');
 	}
 	return (sig * r);
-}
-
-int	main(void)
-{
-	char	*digit;
-	int		resultado;
-
-	digit = "\n\t-1234yt";
-	resultado = ft_atoi(digit);
-	//resultado = ft_atoi(digit);
-	printf("%i", resultado);
-	return (0);
 }
