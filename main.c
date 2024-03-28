@@ -17,7 +17,7 @@ int	main(void)
 	write(1, &output, 1);
 	write(1, "\n", 1);
 	/*isdigit*/
-    printf("ft_isdigit - input 'R':\n");
+    printf("\nft_isdigit - input 'R':\n");
 	input = 'R';
 	result = ft_isdigit(input);
 	output = result + '0';
@@ -28,7 +28,7 @@ int	main(void)
 	output = result + '0';
 	write(1, &output, 1);
 	/*isalnum*/
-	printf("\nft_isalnum -  input: '-'\n");
+	printf("\n\nft_isalnum -  input: '-'\n");
 	input = '-';
 	result = ft_isalnum(input);
 	output = result + '0';
@@ -38,7 +38,7 @@ int	main(void)
 	/*isprint*/
 	input = 'A';
 	//input = '\t'
-	printf("ft_isprint - input: '%c'\n%i\n", input,ft_isprint(input));
+	printf("\nft_isprint - input: '%c'\n%i\n", input,ft_isprint(input));
 	/*strlen*/
 	const char	s[20] = "Have a good one!";
 	printf("\nft_strlen -  input:%s\n", s);
@@ -49,14 +49,14 @@ int	main(void)
 	printf("\nft_memset - 'F'-  output:%s\n", buffer1);
 	char	buffer2[20];
 	memset(buffer2, 'D', sizeof(buffer2));
-	printf("\nmemset -'D' - output:%s\n", buffer2);
+	printf("memset -'D' - output:%s\n", buffer2);
 	/*bzero*/
 	char	buffer3[20] = "Hola";
 	ft_bzero(buffer3, sizeof(buffer3));
 	printf("\nft_bzero  - output:%s\n", buffer3);
 	char	buffer4[20] = "Que tal";
 	bzero(buffer4, sizeof(buffer4));
-	printf("\nbzero  - output:%s\n", buffer4);
+	printf("bzero  - output:%s\n", buffer4);
 	/*memcpy*/
 	char	dest[20] = "Hello, world";
 	char	src[20] = "Goodbye!";
@@ -64,7 +64,7 @@ int	main(void)
 	printf("\nft_memcpy - output:%s\n", dest);
 	char	dest2[20] = "Hello, world";
 	memcpy(dest2, src, sizeof(src));
-	printf("\nmemcpy - output:%s\n", dest2);
+	printf("memcpy - output:%s\n", dest2);
 	/*memmove*/
 	printf("\nFT_MEMMOVE: StartS stops; dest+6 - dest+8 - 5");
 	char	buff1[] = "StartS stops";
@@ -228,6 +228,47 @@ int	main(void)
     res = ft_atoi(digit);
     //resultado = ft_atoi(digit);
     printf("resultado: %i\n", res);
+	/*CALLOC*/
+	printf("\n\nFT_CALLOC\n");
+    int *arr1;
+    unsigned int n1;
+    n1 = 5;
+    // Allocate memory for array of 5 integers
+	printf("Number of elements: %i \n", n1);
+    arr1 = (int *)ft_calloc(n1, sizeof(int));
+    //arr = (int *)calloc(n, sizeof(int));
+    if (arr1 == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return (1);
+    }
+    // Printing the initialized array
+    printf("Initialized array:\n");
+    i = 0;
+    while (i < n1)
+    {
+		printf("%d ", arr1[i]);
+		i++;
+    }
+    printf("\n");
+    free(arr1); // Free allocated memory
+	/*STRDUP*/
+	printf("\n\nFT_STRDUP\n");
+    char *original;
+    char *duplicate;
 
+    original = "Hey, have a good one!";
+    // Duplicate the string
+    //duplicate = strdup(original);
+    duplicate = ft_strdup(original);
+    if (duplicate != NULL)
+	{
+        printf("Original: %s\n", original);
+        printf("Duplicate: %s\n", duplicate);
+        // Remember to free the allocated memory when done
+        free(duplicate);
+    } else {
+        printf("Memory allocation failed.\n");
+    }
 	return (0);
 }
