@@ -3,6 +3,16 @@
 #include <string.h>
 #include "libft.h"
 
+// Función de ejemplo para aplicar a cada carácter
+char    add_one(unsigned int index, char c)
+{
+        return (c + 1); // Incrementa el valor del carácter en 1
+}
+// Función de ejemplo para imprimir el índice y el carácter
+void    print_index_and_character(unsigned int index, char *c)
+{
+	printf("Caracter en el indice %u: %c\n", index, *c);
+}
 int	main(void)
 {
 	char	input;
@@ -109,7 +119,7 @@ int	main(void)
     len_total = strlcat(a2, b, sizeof(a));
     printf("length:%li\n",len_total);
     printf("variable destino:%s\n",a);*/
-		/*TOUPPER*/
+	/*TOUPPER*/
 	printf("\nFT_TOUPPER\n");
 	char c1;
     c1 = 'm';
@@ -270,5 +280,115 @@ int	main(void)
     } else {
         printf("Memory allocation failed.\n");
     }
+
+	/*FT_SUBSTR*/
+	printf("\n\nFunciones aditionales\n");
+	printf("\nFT_SUBSTR\n");
+	    // Cadena de ejemplo para probar ft_substr
+    char st[] = "Ejemplo de cadena para probar la funcion ft_substr";
+    // indice de inicio y longitud maxima para la substring
+    unsigned int	start_index;
+    size_t	max_le;
+	char	*substring;
+	start_index = 11;
+	max_le = 15;
+	printf("str: %s, star_index: %i, max_len:%li\n", st, start_index, max_le);
+	substring = ft_substr(st, start_index, max_le);
+    if (substring == NULL) {
+    	printf("Error: No se pudo crear la substring.\n");
+        return (1);
+    }
+	printf("Substring:%s\n", substring);
+	free(substring);
+	/*FT_STRJOIN*/
+	printf("\nFT_STRJOIN\n");
+	const char      d1[] = "Hey there, ";
+	const char      d2[] = "everybody!";
+	char            *resu;
+	printf("str1: %s, str2: %s\n", d1, d2);
+	resu = ft_strjoin(d1, d2);
+	if (!resu)
+	{
+		printf("Error: Falló la asignación de memoria.\n");
+	       	return (1);
+	}
+	printf("Cadena concatenada: %s\n", resu);
+	free(resu);
+	/*FT_STRTRIM*/
+	printf("\nFT_STRTRIM\n");
+
+    char    s1a[] = "x\t-Hello World?\tx-";
+    char    set[] = "x\t-";
+    char    *trimmed_str;
+	
+    printf("string:%s, set:%s('x\\t')\n", s1a, set);
+    trimmed_str = ft_strtrim(s1a, set);
+    if (!trimmed_str)
+    {
+        printf("Error: Memory allocation failed.\n");
+        return (1);
+    }
+    printf("Trimmed string: \"%s\"\n", trimmed_str);
+    free(trimmed_str);
+	/*FT_SPLIT*/
+	printf("\nFT_SPLIT\n");
+	char *sdr = "Esta-,es-,una-,cadena-,de-,ejemplo";
+    char **resuld = ft_split(sdr, ',');
+	printf("string: %s, delimiter: '-'\n", sdr);
+	if (resuld) 
+	{
+		size_t y = 0;
+		while (resuld[y])
+		{
+			printf("%s\n", resuld[y]);
+			free(resuld[y]); // Liberar memoria asignada a cada subcadena
+			y++;
+        }
+        free(resuld); // Liberar memoria asignada al array de strings
+	}
+	else
+	{
+		printf("Error: no se pudo dividir la cadena\n");
+	}
+
+	/*FT_ITOA*/
+	printf("\nFT_ITOA\n");
+	int nubm = -1093;
+	char *stre = ft_itoa(nubm);
+	if (stre)
+	{
+		printf("Integer: %d, String: %s\n", nubm, stre);
+		free(stre);
+	}
+	else
+	{
+		printf("Memory allocation failed.\n");
+	}
+	/*FT_STRMAPI*/
+	printf("\nFT_STRMAPI\n");
+
+    char *input_string = "Buenas tardes!";
+	printf ("cadena inicial:%s - cambiamos cada letra: c + 1\n", input_string);
+    char *result_string = ft_strmapi(input_string, &add_one);
+
+    if (result_string)
+    {
+		printf("Cadena resultante: %s\n", result_string);
+		// Liberar la memoria asignada a la cadena resultante
+		free(result_string);
+    } else {
+        printf("Error: No se pudo asignar memoria para la cadena resultante.\n");
+    }
+	/*FT_STRITERI*/
+	printf("\nFT_STRITERI\n");
+	char stt[] = "Hey, everybody!";
+	printf ("cadena inicial:%s\n", stt);
+    // Llamar a la función ft_striteri con la función print_index_and_character
+    ft_striteri(stt, &print_index_and_character);
+
+
+
+
 	return (0);
 }
+
