@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <fcntl.h>
 #include <string.h>
 #include "libft.h"
 
@@ -385,9 +386,79 @@ int	main(void)
 	printf ("cadena inicial:%s\n", stt);
     // Llamar a la función ft_striteri con la función print_index_and_character
     ft_striteri(stt, &print_index_and_character);
+	
+	/*FT_PUTCHAR_FD*/
+	printf("\nFT_PUTCHAR_FD\n");
+    int             fd;
+    char    character;
 
+    fd = open("output1.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd == -1)
+    {
+        // 1 is the file descriptor for stdout
+        write(1, "Error al abrir el archivo\n", 27);
+        return (1);
+    }
+    character = 'A';
+    ft_putchar_fd(character, fd);
+    close(fd);
+    printf("Caracter '%c' escrito en el archivo 'output1.txt'\n", character);
+	/*FT_PUTSTR_FD*/
+	printf("\nFT_PUTSTR_FD\n");
+    char    *sty;
 
+    // Abrir un archivo para escribir
+    fd = open("output2.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd == -1)
+    {
+        write(1, "Error al abrir el archivo\n", 27);
+        return (1);
+    }
+	// Cadena a escribir
+    sty = "Hey, How's it going?";
+	// Llamar a ft_putstr_fd para escribir la cadena en el archivo
+    ft_putstr_fd(sty, fd);
+	// Cerrar el archivo
+    close(fd);
+	printf("Cadena '%s' escrita en el archivo 'output2.txt'\n", sty);
 
+	/*FT_PUTENDL_FD*/
+	printf("\nFT_PUTENDL_FD\n");
+	char    *sth;
+
+    fd = open("output3.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd == -1)
+    {
+        write(1, "Error al abrir el archivo\n", 27);
+        return 1;
+    }
+    // Cadena a escribir
+    sth = "Hey, there!";
+    ft_putendl_fd(sth, fd);
+	// Cerrar el archivo
+    close(fd);
+	printf("Cadena '%s' escrita en el archivo 'output3.txt' con un salto de línea\n", sth);
+
+	/*FT_PUTNBR_FD*/
+	printf("\nFT_PUTNBR_FD\n");
+    int number;
+
+    fd = open("output4.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd == -1)
+    {
+        write(1, "Error al abrir el archivo\n", 27);
+        return (1);
+    }
+	// Número a escribir
+    number = -2147483648;
+
+    // Llamar a ft_putnbr_fd para escribir el número en el archivo
+    ft_putnbr_fd(number, fd);
+
+    // Cerrar el archivo
+    close(fd);
+
+    printf("Número '%d' escrito en el archivo 'output4.txt'\n", number);
 
 	return (0);
 }
