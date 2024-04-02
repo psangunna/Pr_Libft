@@ -5,87 +5,15 @@
 #include "libft.h"
 
 // Función de ejemplo para aplicar a cada carácter
-static char    add_one(unsigned int index, char c)
+char    add_one(unsigned int index, char c)
 {
         return (c + 1); // Incrementa el valor del carácter en 1
 }
 // Función de ejemplo para imprimir el índice y el carácter
-static void    print_index_and_character(unsigned int index, char *c)
+void    print_index_and_character(unsigned int index, char *c)
 {
 	printf("Caracter en el indice %u: %c\n", index, *c);
 }
-
-/*functions used for main to testing*/
-// Function to print the linked list 
-
-static void	print_list(t_list *head)
-{ 
-	t_list	*current;
-
-	current = head;
-	while (current != NULL)
-	{
-		printf("%s -> ", (char *)current->content); 
-		current = current->next; 
-	}
-    printf("NULL\n"); 
-
-}
-
-// Function to free memory allocated for the linked list 
-static void	free_list(t_list *head)
-{ 
-	t_list	*current;
-	t_list	*temp;
-
-	current = head; 
-    while (current != NULL)
-	{
-		temp = current;
-		current = current->next;
-		free(temp);
-	} 
-
-}
-
-static void del_content(void *content) { 
-
-    free(content); 
-
-} 
-
-// Function to increment the content of a node by one 
-
-static void *add_one_num(void *num)
-{
-	int *ptr;
-	int *result;
-	int	i;
-
-	i = (int )num;
-    i = i + 1;
-	ptr = (int *)i;
-    //ptr = (int *)num; >>no funciona 
-	result = (int *)malloc(sizeof(int)); 
-    if (!result)
-	{
-		printf("Error");
-		return (0); 
-    }
-	
-	result = ptr; 
-
-    return (result); 
-
-}
-
-// Function to print the content of a node 
-static void	print_content(void *content) 
-{
-	printf("%s\n", (char *)content); 
-
-} 
-
 int	main(void)
 {
 	char	input;
@@ -531,8 +459,6 @@ int	main(void)
     close(fd);
 
     printf("Número '%d' escrito en el archivo 'output4.txt'\n", number);
-	/*BONUSSSSS FUNCTIONS*/
-
 
 	return (0);
 }
