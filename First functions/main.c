@@ -354,7 +354,7 @@ int	main(void)
 
 	/*FT_ITOA*/
 	printf("\nFT_ITOA\n");
-	int nubm = -1093;
+	int nubm = -1235;
 	char *stre = ft_itoa(nubm);
 	if (stre)
 	{
@@ -433,7 +433,7 @@ int	main(void)
         return 1;
     }
     // Cadena a escribir
-    sth = "Hey, there!";
+    sth = "Smile";
     ft_putendl_fd(sth, fd);
 	// Cerrar el archivo
     close(fd);
@@ -442,7 +442,6 @@ int	main(void)
 	/*FT_PUTNBR_FD*/
 	printf("\nFT_PUTNBR_FD\n");
     int number;
-
     fd = open("output4.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (fd == -1)
     {

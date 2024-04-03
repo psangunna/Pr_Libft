@@ -10,7 +10,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	s2_len;
 	char	*new_str;
 
-	if (*s1 == '\0' || *s2 == '\0')
+	if (!s1 || !s2)
 		return (0);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);

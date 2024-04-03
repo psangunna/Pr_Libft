@@ -2,7 +2,7 @@
 
 /*
 This function ft_lstiter iterates over a list lst and applies 
-the function f to the content of each node. It takes two parameters: 
+the function f to the content of each node. It takes two parameters:
 a pointer to the first node of the list (lst) and a pointer to a 
 function (f) that will be applied to each node's content. 
 */

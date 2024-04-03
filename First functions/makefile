@@ -17,7 +17,7 @@ all: $(LIBRARY_NAME)
 
 $(LIBRARY_NAME): $(OBJECT_FILES) $(HEADER_FILE)
 	$(LIB) $(LIBRARY_NAME) $(OBJECT_FILES)
-
+	@echo "Nothing to be done for '$@'"
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
