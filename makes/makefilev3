@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/04 17:02:28 by psanguna          #+#    #+#              #
-#    Updated: 2024/04/04 17:03:34 by psanguna         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LIB = ar -rcs
@@ -34,13 +22,13 @@ O_BONUS_FILES = $(BONUS_FILES:.c=.o)
 all: $(LIBRARY_NAME)
 
 $(LIBRARY_NAME): $(OBJECT_FILES)
-	@$(LIB) $(LIBRARY_NAME) $(OBJECT_FILES)
+	@$(LIB) $@ $^
 
-%.o: %.c
+%.o: %.c $(HEADER_FILE)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-bonus: $(O_BONUS_FILES)
-	$(LIB) $(LIBRARY_NAME) $(O_BONUS_FILES)
+bonus:
+	@make SRC='${BONUS_FILES}'
 
 clean:
 	$(RM) $(OBJECT_FILES) $(O_BONUS_FILES)

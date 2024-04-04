@@ -1,5 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 14:34:33 by psanguna          #+#    #+#             */
+/*   Updated: 2024/04/04 14:38:58 by psanguna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 
+/*
+ *It concatenates two strings with a specified maximun 'size',
+ *ensuring that the destination buffer does not overflow.
+ */
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	len_dest;

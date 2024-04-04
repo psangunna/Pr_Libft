@@ -1,19 +1,23 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 16:08:36 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/26 18:06:45 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/04 14:30:26 by psanguna          #+#    #+#             */
+/*   Updated: 2024/04/04 14:32:50 by psanguna         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 #include "libft.h"
 
+/*
+ *It copies 'n' characters from 'src' to 'dest', but for overlapping memory
+ *blocks. It is a safer approach tha memcpy.
+ */
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t					i;
+	size_t			i;
 	unsigned char	*d;
 	unsigned char	*s;
 

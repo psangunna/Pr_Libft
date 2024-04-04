@@ -1,4 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 15:58:28 by psanguna          #+#    #+#             */
+/*   Updated: 2024/04/04 16:26:54 by psanguna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
+
 /*
 function concatenates two strings by dynamically allocating memory and 
 copying characters from both strings into the allocated memory space,

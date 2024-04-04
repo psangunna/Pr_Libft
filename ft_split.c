@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 16:02:25 by psanguna          #+#    #+#             */
+/*   Updated: 2024/04/04 16:03:02 by psanguna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 #include <stdio.h>
+
 /*This function counts the number of words in a string delimited 
 by a specified character.*/
 static size_t	count_words(char const *s, char c)
@@ -64,7 +76,7 @@ static int	treat_word(const char *s, char c, char **split, size_t word_count)
 		}
 		i++;
 	}
-	split[i] = '\0';
+	split[i] = NULL;
 	return (1);
 }
 

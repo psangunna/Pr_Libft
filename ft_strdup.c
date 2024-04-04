@@ -1,5 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 15:53:53 by psanguna          #+#    #+#             */
+/*   Updated: 2024/04/04 15:56:03 by psanguna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 
+/*
+*It duplicates a string. It dinamically allocates memory for a new string 
+*into the allocated memory and returns a pointer to the new string.
+*/
 char	*ft_strdup(const char *str)
 {
 	size_t			len;

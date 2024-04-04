@@ -1,4 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 15:59:33 by psanguna          #+#    #+#             */
+/*   Updated: 2024/04/04 15:59:49 by psanguna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
+
 /*
 function removes leading and trailing characters from s1 that match any 
 character in the set string. It returns a newly allocated string 
