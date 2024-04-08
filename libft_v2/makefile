@@ -6,7 +6,7 @@
 #    By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/04 17:02:28 by psanguna          #+#    #+#              #
-#    Updated: 2024/04/08 21:17:42 by pamela           ###   ########.fr        #
+#    Updated: 2024/04/08 21:03:08 by pamela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ BONUS_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_
 	      ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 O_BONUS_FILES = $(BONUS_FILES:.c=.o)
+BONUS_CACHE = .cache
 
 all: $(NAME)
 
@@ -39,21 +40,24 @@ $(NAME): $(OBJECT_FILES)
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-bonus: $(O_BONUS_FILES)
+$(BONUS_CACHE):$(O_BONUS_FILES)
 	@$(LIB) $(NAME) $(O_BONUS_FILES)
+	@touch $(BONUS_CACHE)
+
+bonus:$(BONUS_CACHE)
 
 clean:
-	$(RM) $(OBJECT_FILES) $(O_BONUS_FILES)
+	$(RM) $(OBJECT_FILES) $(O_BONUS_FILES) $(BONUS_CACHE)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) libft.so
 
 re: fclean all
 
 rebonus: fclean bonus
 
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SOURCE_FILES)
-	gcc -nostartfiles -shared -o libft.so $(OBJECT_FILES)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SOURCE_FILES) $(BONUS_FILES)
+	gcc -nostartfiles -shared -o libft.so $(OBJECT_FILES) $(O_BONUS_FILES)
 
 .PHONY: all clean fclean re bonus rebonus
