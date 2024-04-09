@@ -5,15 +5,86 @@
 #include "libft.h"
 
 // Función de ejemplo para aplicar a cada carácter
-char    add_one(unsigned int index, char c)
+static char    add_one(unsigned int index, char c)
 {
         return (c + 1); // Incrementa el valor del carácter en 1
 }
 // Función de ejemplo para imprimir el índice y el carácter
-void    print_index_and_character(unsigned int index, char *c)
+static void    print_index_and_character(unsigned int index, char *c)
 {
 	printf("Caracter en el indice %u: %c\n", index, *c);
 }
+
+/*functions used for main to testing*/
+// Function to print the linked list 
+
+static void	print_list(t_list *head)
+{ 
+	t_list	*current;
+
+	current = head;
+	while (current != NULL)
+	{
+		printf("%s -> ", (char *)current->content); 
+		current = current->next; 
+	}
+    printf("NULL\n"); 
+
+}
+
+// Function to free memory allocated for the linked list 
+static void	free_list(t_list *head)
+{ 
+	t_list	*current;
+	t_list	*temp;
+
+	current = head; 
+    while (current != NULL)
+	{
+		temp = current;
+		current = current->next;
+		free(temp);
+	} 
+
+}
+
+void	del_content(void *content)
+{	
+	free(content);
+} 
+
+// Function to increment the content of a node by one 
+
+static void *add_one_num(void *num)
+{
+	int *ptr;
+	int *result;
+	int	i;
+
+	i = (int )num;
+    i = i + 1;
+	ptr = (int *)i;
+    //ptr = (int *)num; >>no funciona 
+	result = (int *)malloc(sizeof(int)); 
+    if (!result)
+	{
+		printf("Error");
+		return (0); 
+    }
+	
+	result = ptr; 
+
+    return (result); 
+
+}
+
+// Function to print the content of a node 
+static void	print_content(void *content) 
+{
+	printf("%s\n", (char *)content); 
+
+} 
+
 int	main(void)
 {
 	char	input;
@@ -354,7 +425,7 @@ int	main(void)
 
 	/*FT_ITOA*/
 	printf("\nFT_ITOA\n");
-	int nubm = -1235;
+	int nubm = -1093;
 	char *stre = ft_itoa(nubm);
 	if (stre)
 	{
@@ -433,7 +504,7 @@ int	main(void)
         return 1;
     }
     // Cadena a escribir
-    sth = "Smile";
+    sth = "Hey, there!";
     ft_putendl_fd(sth, fd);
 	// Cerrar el archivo
     close(fd);
@@ -442,6 +513,7 @@ int	main(void)
 	/*FT_PUTNBR_FD*/
 	printf("\nFT_PUTNBR_FD\n");
     int number;
+
     fd = open("output4.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (fd == -1)
     {
@@ -458,6 +530,219 @@ int	main(void)
     close(fd);
 
     printf("Número '%d' escrito en el archivo 'output4.txt'\n", number);
+	/*BONUSSSSS FUNCTIONS*/
+
+	/*FT_LSTNEW*/
+	printf("\nFT_LSTNEW\n");
+	t_list *node;
+	// Creamos un nuevo nodo con contenido "Hello, world!"
+	node = ft_lstnew("cheers and smile");
+	// Verificamos si la creación del nodo fue exitosa 
+	if (node)
+	{
+		// Imprimimos el contenido del nodo
+		printf("Contenido del nodo: %s\n", (char *)node->content);
+		// Liberamos la memoria del nodo
+		free(node);
+	}
+	else
+	{
+		printf("Error: No se pudo crear el nodo.\n");
+	}
+	 
+	/*FT_LSTADD_FRONT*/
+	printf("\nFT_LSTADD_FRONT\n");
+    // Create the first node
+	t_list *head1;
+
+	head1 = ft_lstnew("a");
+    if (head1 == NULL)
+	{
+		printf("Error: No se pudo crear el nodo.\n");
+	}
+    // Print the initial list
+	printf("Initial list:\n");
+	print_list(head1); 
+    // Create a new node
+	t_list *new_node;
+	
+	new_node = ft_lstnew("b"); 
+    if (new_node == NULL)
+	{
+		printf("Error: No se pudo crear el nodo.\n");
+	}
+    // Add the new node to the front of the list 
+    ft_lstadd_front(&head1, new_node); 
+	// Print the updated list 
+    printf("\nList after adding a new node at the front:\n"); 
+	print_list(head1);
+    // Free memory 
+	free_list(head1); 
+	/*FT_LSTSIZE*/
+	t_list	*second;
+	t_list	*third;
+	int		sizes;
+
+	printf("\nFT_LSTSIZE\n");
+	// Create some nodes for the linked list 
+    head1 = ft_lstnew("First"); 
+    second = ft_lstnew("Second"); 
+    third = ft_lstnew("Third"); 
+    // Connect the nodes to form a linked list 
+    head1->next = second; 
+    second->next = third; 
+    // Call the function ft_lstsize to get the size of the linked list 
+	sizes = ft_lstsize(head1);
+    // Print the size of the linked list
+	printf("list:\n");
+	print_list(head1); 
+    printf("Size of the linked list: %d\n", sizes);
+    // Free memory allocated for the linked list 
+    free(head1);
+    free(second);
+    free(third);
+
+
+	/*FT_LSTLAST*/
+	printf("\nFT_LSTLAST\n");
+	t_list *last_node;
+    // Create some nodes for the linked list 
+    head1 = ft_lstnew("First"); 
+    second = ft_lstnew("Second"); 
+    third = ft_lstnew("Third"); 
+
+    // Connect the nodes to form a linked list 
+	head1->next = second;
+	second->next = third;
+	third->next = NULL; 
+    // Call ft_lstlast to get the last node of the linked list 
+    last_node = ft_lstlast(head1); 
+	// Print the size of the linked list
+	printf("list:\n");
+	print_list(head1); 
+    if (last_node != NULL)
+	{
+		printf("Content of the last node: %s\n", (char *)last_node->content); 
+    } else {
+		printf("The list is empty.\n"); 
+    }
+    // Free memory allocated for the linked list 
+    free(head1); 
+    free(second); 
+    free(third); 
+
+	/*FT_LSTADD_BACK*/
+	printf("\nFT_LSTADD_BACK\n");
+   // Create the first node 
+	head1 = ft_lstnew("First");
+    // Print the initial list 
+    printf("Initial list:\n"); 
+    print_list(head1); 
+    // Create a new node
+	new_node = ft_lstnew("Second");
+    // Add the new node to the back of the list 
+    ft_lstadd_back(&head1, new_node); 
+    // Print the updated list 
+    printf("\nList after adding a new node at the back:\n"); 
+    print_list(head1); 
+    // Free memory allocated for the linked list 
+    free_list(head1);
+
+	/*FT_LSTDELONE*/
+	printf("\nFT_LSTDELONE\n");
+    t_list	*head2 = (t_list *)malloc(sizeof(t_list)); 
+    if (head2== NULL) 
+	{
+		printf("Error de memoria");
+    } 
+    head2->content = strdup("Hello, world!"); 
+    head2->next = NULL; 
+    // Print the content of the node before deletion
+	printf("Content of the node before deletion: %s\n", (char *)head2->content);
+    // Call ft_lstdelone to delete the node 
+	ft_lstdelone(head2, del_content); 
+    // Print a message after deletion 
+	printf("Node deleted successfully.\n");
+
+
+	/*FT_LSTCLEAR*/
+	t_list *current;
+	printf("\nFT_LSTCLEAR\n");
+	// Create a linked list with three nodes
+	head1 = (t_list *)malloc(sizeof(t_list)); 
+    if (head1 == NULL) 
+	{
+		printf("Error de memoria");
+    } 
+	head1->content = strdup("First");
+    head1->next = (t_list *)malloc(sizeof(t_list)); 
+    head1->next->content = strdup("Second"); 
+    head1->next->next = (t_list *)malloc(sizeof(t_list)); 
+    head1->next->next->content = strdup("Third"); 
+    head1->next->next->next = NULL; 
+
+	// Print the content of each node before deletion 
+    printf("Content of nodes before deletion:\n"); 
+    current = head1; 
+    while (current)
+	{
+		printf("%s\n", (char *)current->content); 
+        current = current->next; 
+
+    }
+    // Call ft_lstclear to delete all nodes 
+    ft_lstclear(&head1, &del_content); 
+    // Print a message after deletion 
+    printf("\nNodes deleted successfully.\n");
+
+	/*FT_LSTITER*/
+	printf("\nFT_LSTITERT\n");
+	head1 = (t_list *)malloc(sizeof(t_list)); 
+    if (head1 == NULL) 
+	{
+		printf("Error de memoria");
+    }
+	head1->content = strdup("First");
+    head1->next = (t_list *)malloc(sizeof(t_list)); 
+    head1->next->content = strdup("Second"); 
+    head1->next->next = (t_list *)malloc(sizeof(t_list)); 
+    head1->next->next->content = strdup("Third"); 
+    head1->next->next->next = NULL;
+    // Call ft_lstiter to apply print_content to each node's content 
+    printf("Contents of the nodes:\n"); 
+    ft_lstiter(head1, &print_content); 
+	// Liberar la memoria de la lista enlazada
+	ft_lstclear(&head1, &del_content);
+
+	/*FT_LSTMAP*/
+	printf("\nFT_LSTMAP\n");
+	// Create a linked list with three nodes containing integers
+	head1 = ft_lstnew((void *)1);
+	ft_lstadd_back(&head1, ft_lstnew((void *)2)); 
+    ft_lstadd_back(&head1, ft_lstnew((void *)3)); 
+    // Print the original list 
+	printf("Original list:\n"); 
+    current = head1; 
+    while (current != NULL)
+	{ 
+
+        printf("%d\n", (int)current->content); 
+
+        current = current->next; 
+
+    } 
+    // Create a new list by adding one to each element of the original list 
+    t_list *new_list = ft_lstmap(head1, &add_one_num, &del_content); 
+    // Print the new list 
+    printf("\nNew list after mapping:\n"); 
+    current = new_list; 
+    while (current != NULL) { 
+        printf("%d\n", (int)current->content); 
+        current = current->next;
+    }
+    // Free memory allocated for both lists 
+    free_list(head1);
+    free_list(new_list);
 
 	return (0);
 }

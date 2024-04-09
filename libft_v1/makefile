@@ -6,7 +6,7 @@
 #    By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/04 17:02:28 by psanguna          #+#    #+#              #
-#    Updated: 2024/04/08 21:03:08 by pamela           ###   ########.fr        #
+#    Updated: 2024/04/09 10:15:03 by pamela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,9 @@ SOURCE_FILES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c 
 
 OBJECT_FILES = $(SOURCE_FILES:.c=.o)
 
-BONUS_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
-	      ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+BONUS_FILES = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c\
+	      ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c\
+	      ft_lstmap_bonus.c
 
 O_BONUS_FILES = $(BONUS_FILES:.c=.o)
 BONUS_CACHE = .cache
