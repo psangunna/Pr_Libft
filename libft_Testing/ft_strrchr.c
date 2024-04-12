@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:46:02 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/09 17:46:53 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/12 18:58:57 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -27,6 +27,8 @@ char	*ft_strrchr(const char *str, int c)
 		}
 		str++;
 	}
+	//El último carácter en la cadena coincida con c, last_value contendrá la dirección del carácter nulo '\0', que no es lo que queremos. 
+	//En lugar de eso, se devolverá un puntero al último carácter coincidente antes del carácter nulo.
 	if (*str == c)
 	{
 		return ((char *)str);

@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:16:41 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/09 20:01:46 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:27:31 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,6 +34,7 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
+		// - '0' convertir un carácter numérico en su equivalente entero
 		r = r * 10 + (str[i++] - '0');
 	}
 	return (sig * r);

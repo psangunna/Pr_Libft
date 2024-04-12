@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:34:33 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/12 13:19:12 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/12 18:23:07 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -35,6 +35,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	if (size <= ft_strlen(dest))
 		return (size + ft_strlen(src));
 	len_dest = ft_strlen(dest);
+	printf("longitud destino:%d\n", len_dest);
 	len_total = len_dest + ft_strlen(src);
 	i = 0;
 	while (src[i] != '\0' && len_dest + 1 < size)
@@ -79,7 +80,8 @@ int				main(int argc, const char *argv[])
 	if ((arg = atoi(argv[1])) == 1)
 	{
 		dest[11] = 'a';
-		check_strlcat(dest, "Two", 15, dest_len);
+		check_strlcat(dest, "Twoos", 15, dest_len);
+		//long 6 destino- null-(11-a); 5 long de two; size: 15, se sobreescribe  a pos 11
 	}
 	else if (arg == 2)
 		check_strlcat(dest, "", 15, dest_len);
@@ -87,7 +89,7 @@ int				main(int argc, const char *argv[])
 	{
 		dest[0] = '\0';
 		dest[11] = 'a';
-		check_strlcat(dest, "Two people", 15, dest_len);
+		check_strlcat(dest, "Two peoples", 15, dest_len);
 	}
 	else if (arg == 4)
 	{

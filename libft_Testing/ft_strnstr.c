@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:50:06 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/12 13:16:26 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:51:46 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,21 +18,26 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (!str)
+	if (!str) //evalua si el puntero es nulo
 		return (0);
-	if (!*to_find)
+	if (!*to_find)//verifica que el primer caracter de la cadena es nulo
 		return ((char *)str);
 	i = 0;
-	while (str[i] && i < len)
+	while (str[i] && i < len) //Bucle principal: recorre la cadena principal hasta alcanzar el final o la longitud máxima.
 	{
 		j = 0;
+		//// Bucle interno: compara cada carácter de la subcadena con la cadena principal.
 		while (str[i + j] == to_find[j] && (i + j) < len)
 		{
+			// Si se alcanza el final tanto de la cadena principal como de la subcadena, se encontró la subcadena dentro de la cadena principal
 			if (str[i + j] == '\0' && to_find[j] == '\0')
+				//Devuelve un puntero al comienzo de la coincidencia encontrada en la cadena principal
 				return ((char *)str + i);
 			j++;
 		}
+		// Si se llega al final de la subcadena, se encontró la subcadena dentro de la cadena principal.
 		if (to_find[j] == '\0')
+			// Devuelve un puntero al comienzo de la coincidencia encontrada en la cadena principal.
 			return ((char *)str + i);
 		i++;
 	}

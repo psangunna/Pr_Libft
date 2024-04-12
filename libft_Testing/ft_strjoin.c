@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:58:28 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/10 12:55:07 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/12 20:07:06 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -22,23 +22,27 @@ function concatenates two strings by dynamically allocating memory and
 copying characters from both strings into the allocated memory space,
 resulting in a single string containing the contents of both input strings
 */
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	s1_len;
-	size_t	s2_len;
-	char	*new_str;
+	size_t s1_len;
+	size_t s2_len;
+	char *new_str;
 
-	if (!s1 || !s2)
-		return (0);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	new_str = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
-	if (!new_str)
-		return (0);
-	ft_memcpy(new_str, s1, s1_len);
-	ft_memcpy(new_str + s1_len, s2, s2_len);
-	new_str[s1_len + s2_len] = '\0';
-	return (new_str);
+	if (!s1 || !s2) // Verifica si alguna de las cadenas de entrada es nula.
+		return (0); // Si alguna de las cadenas es nula, devuelve un puntero nulo.
+
+	s1_len = ft_strlen(s1); // Calcula la longitud de la primera cadena.
+	s2_len = ft_strlen(s2); // Calcula la longitud de la segunda cadena.
+
+	new_str = (char *)malloc((s1_len + s2_len + 1) * sizeof(char)); // Asigna memoria para la cadena resultante, más un carácter adicional para el nulo terminador.
+	if (!new_str) // Verifica si la asignación de memoria fue exitosa.
+		return (0); // Si no lo fue, devuelve un puntero nulo.
+
+	ft_memcpy(new_str, s1, s1_len); // Copia la primera cadena en la cadena resultante.
+	ft_memcpy(new_str + s1_len, s2, s2_len); // Copia la segunda cadena después de la primera cadena en la cadena resultante.
+	new_str[s1_len + s2_len] = '\0'; // Agrega el nulo terminador al final de la cadena resultante.
+
+	return (new_str); // Devuelve un puntero a la cadena resultante.
 }
 
 static void	ft_print_result(char const *s)

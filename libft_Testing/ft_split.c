@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:02:25 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/12 13:11:48 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/12 20:16:13 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,91 +20,94 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 /*This function counts the number of words in a string delimited 
 by a specified character.*/
+#include <stdlib.h>
+
+// Función auxiliar para contar las palabras en la cadena 's' delimitadas por el caracter 'c'
 static size_t	count_words(char const *s, char c)
 {
-	size_t	count;
-	int		in_word;
+    size_t count = 0; // Inicializa el contador de palabras
+    int in_word = 0; // Variable para rastrear si estamos dentro de una palabra o no
 
-	count = 0;
-	in_word = 0;
-	while (*s)
-	{
-		if (*s == c)
-		{
-			in_word = 0;
-		}
-		else
-		{
-			if (!in_word)
-			{
-				count++;
-				in_word = 1;
-			}
-		}
-		s++;
-	}
-	return (count);
+    // Itera a través de la cadena 's'
+    while (*s)
+    {
+        if (*s == c) // Si el carácter actual es el delimitador 'c'
+        {
+            in_word = 0; // Estamos fuera de una palabra
+        }
+        else
+        {
+            if (!in_word) // Si estamos fuera de una palabra y encontramos un carácter no delimitador
+            {
+                count++; // Incrementa el contador de palabras
+                in_word = 1; // Estamos dentro de una palabra
+            }
+        }
+        s++; // Mueve el puntero al siguiente carácter
+    }
+    return count; // Devuelve el contador de palabras
 }
 
-/*It deallocates memory allocated for the array of strings split*/
+// Función auxiliar para liberar la memoria asignada para el array de strings 'split'
 static void	free_split(char **split, size_t i)
 {
-	while (i > 0)
-	{
-		free(split[i - 1]);
-		i--;
-	}
-	free (split);
+    while (i > 0)
+    {
+        free(split[i - 1]); // Libera la memoria asignada para cada string en 'split'
+        i--;
+    }
+    free(split); // Libera la memoria asignada para 'split' en sí
 }
 
-/*It processes each word in the string s, delimited by the character c, 
-and stores them in the array split.*/
+// Función auxiliar para procesar cada palabra en la cadena 's', delimitada por 'c', y almacenarlas en el array 'split'
 static int	treat_word(const char *s, char c, char **split, size_t word_count)
 {
-	const char	*start;
-	size_t		len;
-	size_t		i;
+    const char *start; // Puntero al inicio de la palabra
+    size_t len; // Longitud de la palabra
+    size_t i = 0; // Índice para recorrer 'split'
 
-	i = 0;
-	while (*s && i < word_count)
-	{
-		while (*s == c)
-			s++;
-		start = s;
-		while (*s && *s != c)
-			s++;
-		len = s - start;
-		split[i] = ft_substr(start, 0, len);
-		if (!split[i])
-		{
-			free_split(split, i);
-			return (0);
-		}
-		i++;
-	}
-	split[i] = NULL;
-	return (1);
+    // Itera a través de 's' para dividir las palabras y almacenarlas en 'split'
+    while (*s && i < word_count)
+    {
+        while (*s == c)
+            s++; // Salta los delimitadores
+        start = s; // Guarda el inicio de la palabra
+        while (*s && *s != c)
+            s++; // Avanza hasta el próximo delimitador o el final de la cadena
+        len = s - start; // Calcula la longitud de la palabra
+        split[i] = ft_substr(start, 0, len); // Almacena la palabra en 'split'
+        if (!split[i]) // Verifica si la asignación de memoria falló
+        {
+            free_split(split, i); // Libera la memoria asignada anteriormente
+            return 0; // Devuelve 0 para indicar un error
+        }
+        i++; // Incrementa el índice
+    }
+    split[i] = NULL; // Establece el último elemento de 'split' como NULL para marcar el final del array
+    return 1; // Devuelve 1 para indicar éxito
 }
 
-/*This function splits a string into an array of substrings 
-based on a specified delimiter character.*/
+// Función principal para dividir la cadena 's' en un array de substrings basados en el delimitador 'c'
 char	**ft_split(char const *s, char c)
 {
-	size_t		word_count;
-	char		**split;
+    size_t word_count; // Número de palabras en 's'
+    char **split; // Array de punteros a strings
 
-	if (!s || !c)
-		return (0);
-	word_count = count_words(s, c);
-	split = (char **)malloc((word_count + 1) * sizeof(char *));
-	if (!split)
-		return (0);
-	if (!treat_word(s, c, split, word_count))
-		return (0);
-	return (split);
+    if (!s || !c)
+        return NULL; // Verifica si 's' o 'c' son nulos
+
+    word_count = count_words(s, c); // Calcula el número de palabras en 's'
+    split = (char **)malloc((word_count + 1) * sizeof(char *)); // Asigna memoria para 'split'
+    if (!split)
+        return NULL; // Devuelve NULL si falla la asignación de memoria
+
+    if (!treat_word(s, c, split, word_count)) // Procesa cada palabra y las almacena en 'split'
+        return NULL; // Devuelve NULL si ocurre un error durante el procesamiento de palabras
+
+    return split; // Devuelve 'split' que contiene las palabras divididas de 's'
 }
 
-static void ft_print_result(char const *s)
+static void	ft_print_result(char const *s)
 {
 	int		len;
 

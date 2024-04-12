@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:47:30 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/09 17:58:50 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:22:44 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -74,11 +74,5 @@ int	main(int argc, const char *argv[])
 		check_memchr("bonjour", 'j', 6);
 	else if (arg == 5)
 		check_memchr("bonjour", 's', 7);
-	else if (arg == 6)
-	{
-		int tab[7] = {-49, 49, 1, -1, 0, -2, 2};
-
-		printf("%s", (char *)ft_memchr(tab, -1, 7));
-	}
 	return (0);
 }

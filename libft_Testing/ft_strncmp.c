@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:46:45 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/09 17:51:27 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:07:52 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,6 +20,8 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 	{
 		if (*str1 != *str2)
 		{
+			//unsigned char, garantiza que los valores de los caracteres se interpreten como sin signo,
+			// evitando así problemas con los caracteres negativos.
 			return ((unsigned char)*str1 - (unsigned char)*str2);
 		}
 		str1++;
