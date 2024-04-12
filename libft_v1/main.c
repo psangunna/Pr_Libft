@@ -7,7 +7,13 @@
 // Función de ejemplo para aplicar a cada carácter
 static char    add_one(unsigned int index, char c)
 {
-        return (c + 1); // Incrementa el valor del carácter en 1
+    return (c + 1); // Incrementa el valor del carácter en 1
+}
+
+// Función de ejemplo para aplicar a cada carácter
+static void   add_one_iter(unsigned int index, char *c)
+{
+	*c = *c + 1; // Incrementa el valor del carácter en 1
 }
 // Función de ejemplo para imprimir el índice y el carácter
 static void    print_index_and_character(unsigned int index, char *c)
@@ -48,34 +54,25 @@ static void	free_list(t_list *head)
 
 }
 
-void	del_content(void *content)
+static void	del_content(void *content)
 {	
 	free(content);
 } 
 
 // Function to increment the content of a node by one 
 
-static void *add_one_num(void *num)
+static void *change_list(char *content)
 {
-	int *ptr;
-	int *result;
-	int	i;
+	int		i;
 
-	i = (int )num;
-    i = i + 1;
-	ptr = (int *)i;
-    //ptr = (int *)num; >>no funciona 
-	result = (int *)malloc(sizeof(int)); 
-    if (!result)
+	i = 0;
+	while (content[i])
 	{
-		printf("Error");
-		return (0); 
-    }
+		content[i] = 'y';
+		i++;
+	}
 	
-	result = ptr; 
-
-    return (result); 
-
+	return (content);
 }
 
 // Function to print the content of a node 
@@ -456,7 +453,8 @@ int	main(void)
 	char stt[] = "Hey, everybody!";
 	printf ("cadena inicial:%s\n", stt);
     // Llamar a la función ft_striteri con la función print_index_and_character
-    ft_striteri(stt, &print_index_and_character);
+    ft_striteri(stt, &add_one_iter);
+	printf("Cadena resultante: %s\n", stt);
 	
 	/*FT_PUTCHAR_FD*/
 	printf("\nFT_PUTCHAR_FD\n");
@@ -591,6 +589,7 @@ int	main(void)
     // Connect the nodes to form a linked list 
     head1->next = second; 
     second->next = third; 
+	third->next = NULL; 
     // Call the function ft_lstsize to get the size of the linked list 
 	sizes = ft_lstsize(head1);
     // Print the size of the linked list
@@ -717,33 +716,37 @@ int	main(void)
 	/*FT_LSTMAP*/
 	printf("\nFT_LSTMAP\n");
 	// Create a linked list with three nodes containing integers
-	head1 = ft_lstnew((void *)1);
-	ft_lstadd_back(&head1, ft_lstnew((void *)2)); 
-    ft_lstadd_back(&head1, ft_lstnew((void *)3)); 
-    // Print the original list 
-	printf("Original list:\n"); 
+	head1 = (t_list *)malloc(sizeof(t_list)); 
+    if (head1 == NULL) 
+	{
+		printf("Error de memoria");
+    }
+	head1->content = strdup("First");
+    head1->next = (t_list *)malloc(sizeof(t_list)); 
+    head1->next->content = strdup("Second"); 
+    head1->next->next = (t_list *)malloc(sizeof(t_list)); 
+    head1->next->next->content = strdup("Third"); 
+    head1->next->next->next = NULL;
     current = head1; 
     while (current != NULL)
-	{ 
-
-        printf("%d\n", (int)current->content); 
-
+	{
+		printf("%s\n", (char *)current->content); 
         current = current->next; 
 
     } 
     // Create a new list by adding one to each element of the original list 
-    t_list *new_list = ft_lstmap(head1, &add_one_num, &del_content); 
+    t_list *new_list = ft_lstmap(head1, (void *)&change_list, (void *)&del_content); 
     // Print the new list 
     printf("\nNew list after mapping:\n"); 
     current = new_list; 
-    while (current != NULL) { 
-        printf("%d\n", (int)current->content); 
+    while (current != NULL)
+	{ 
+        printf("%s\n", (char *)current->content); 
         current = current->next;
     }
     // Free memory allocated for both lists 
     free_list(head1);
     free_list(new_list);
-
 	return (0);
 }
 
