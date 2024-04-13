@@ -6,7 +6,7 @@
 /*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:10:21 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/09 10:10:24 by pamela           ###   ########.fr       */
+/*   Updated: 2024/04/13 15:37:13 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,15 +22,18 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_lst;
 	t_list	*item;
+	void	*set;
 
 	if (!lst)
 		return (0);
 	new_lst = 0;
 	while (lst)
 	{
-		item = ft_lstnew(f(lst->content));
+		set = f(lst->content);
+		item = ft_lstnew(set);
 		if (!item)
 		{
+			del(set);
 			ft_lstclear(&new_lst, del);
 			return (0);
 		}
