@@ -23,8 +23,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
-	if (!dest || !src)
+	if (!dest)
 		return (0);
+	if (!src)
+	{
+		return (dest);
+	}
 	i = 0;
 	while (i < n)
 	{
@@ -66,7 +70,13 @@ int	main(int argc, const char *argv[])
 	else if (arg == 5)
 	{
 		printf("destination string = NULL\n");
-		check_memcpy(NULL, "zyxwvutsrqponmlkjihgfedcba", 11);
+		check_memcpy((void *)0, "zyxwvutsrqponmlkjihgfedcba", 11);
 	}
+	else if (arg == 6)
+	{
+		printf("source string = NULL and size 0\n");
+		check_memcpy(mem, NULL, 0);
+	}
+
 	return (0);
 }
