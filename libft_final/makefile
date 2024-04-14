@@ -6,7 +6,7 @@
 #    By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/04 17:02:28 by psanguna          #+#    #+#              #
-#    Updated: 2024/04/14 20:14:34 by pamela           ###   ########.fr        #
+#    Updated: 2024/04/14 20:25:12 by pamela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ clean:
 	$(RM) $(OBJECT_FILES) $(O_BONUS_FILES) $(BONUS_CACHE)
 
 fclean: clean
-	$(RM) $(NAME) libft.so
+	$(RM) $(NAME)
 
 re: fclean all
 
