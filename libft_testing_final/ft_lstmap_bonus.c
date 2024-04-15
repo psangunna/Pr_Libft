@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:10:21 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/12 12:33:56 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:51:19 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -39,16 +39,19 @@ function and returns NULL.
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_lst;
-	t_list	*item;
+	t_list	*item;i
+	void	*set;
 
 	if (!lst)
 		return (0);
 	new_lst = 0;
 	while (lst)
 	{
-		item = ft_lstnew(f(lst->content));
+		set = f(lst->content);
+		item = ft_lstnew(set);
 		if (!item)
 		{
+			del(set);
 			ft_lstclear(&new_lst, del);
 			return (0);
 		}

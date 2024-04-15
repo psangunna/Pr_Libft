@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 09:57:33 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/12 20:14:15 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:44:44 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 
 // Función auxiliar para obtener el tamaño necesario para la representación de un número entero como cadena
-static int	ft_get_size(int n)
+static int	get_number_size(int n)
 {
     int size;
 
@@ -32,12 +32,12 @@ static int	ft_get_size(int n)
 }
 
 // Función auxiliar para llenar la cadena con los dígitos del número
-static void	ft_fill_str(int size, int res, int n, char *str)
+static void	fill_result_string(int size, int offset, int n, char *result)
 {
-    // Rellenar la cadena desde la posición 'size' hasta 'res' con los dígitos del número
-    while (size > res)
+    // Rellenar la cadena desde la posición 'size' hasta 'offset' con los dígitos del número
+    while (size > offset)
     {
-        str[size - 1] = n % 10 + '0'; // Convertir el dígito numérico en su representación de carácter
+        result[size - 1] = n % 10 + '0'; // Convertir el dígito numérico en su representación de carácter
         n = n / 10;
         size--;
     }
@@ -48,35 +48,35 @@ char	*ft_itoa(int n)
 {
     int res;
     int size;
-    char *str;
+    char *result;
 
-    res = 0;
+    offset = 0;
     // Calcular el tamaño necesario para la cadena
-    size = ft_get_size(n);
+    size = get_number_size(n);
     // Asignar memoria para la cadena resultante, más un carácter adicional para el nulo terminador
-    str = (char *)malloc((size + 1) * sizeof(char));
-    if (!str)
+    result = (char *)malloc((size + 1) * sizeof(char));
+    if (!result)
         return (0); // Devolver NULL si falla la asignación de memoria
     // Manejar el caso especial si 'n' es el valor mínimo representable
     if (n == -2147483648)
     {
-        str[0] = '-';
-        str[1] = '2';
+        result[0] = '-';
+        result[1] = '2';
         n = 147483648;
-        res = 2;
+        offset = 2;
     }
     // Si 'n' es negativo, establecer el primer carácter de 'str' como '-'
     if (n < 0)
     {
-        str[0] = '-';
-        res = 1;
+        result[0] = '-';
+        offset = 1;
         n = -n;
     }
     // Rellenar 'str' con los dígitos de 'n'
-    ft_fill_str(size, res, n, str);
+    fill_result_string(size, offset, n, result);
     // Agregar el nulo terminador al final de 'str'
-    str[size] = '\0';
-    return (str); // Devolver un puntero a la cadena resultante
+    result[size] = '\0';
+    return (result); // Devolver un puntero a la cadena resultante
 }
 
 

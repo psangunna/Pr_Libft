@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:02:25 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/14 19:24:54 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:39:07 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,135 +19,92 @@ size_t	ft_strlen(const char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
-// Helper function to count the words in a string
+/* Helper function to count the words in a string */
 static size_t count_words(char const *str, char delimiter)
 {
-    size_t word_count;
-    size_t index;
+    size_t word_count; // Variable para contar el número de palabras
+    size_t index; // Índice para recorrer la cadena de caracteres
 
-    // Initialize variables to store word count and index
-    word_count = 0;
-    index = 0;
-
-    // Iterate through the string until null terminator is encountered
-    while (str[index])
+    word_count = 0; // Inicializa el contador de palabras
+    index = 0; // Inicializa el índice
+    while (str[index]) // Itera hasta llegar al final de la cadena
     {
-        // If the current character is not the delimiter, increment word count
-        if (str[index] != delimiter)
+        if (str[index] != delimiter) // Si el carácter actual no es el delimitador
         {
-            word_count++;
-
-            // Advance index until delimiter or null terminator is encountered, skipping over the current word
-            while (str[index] && str[index] != delimiter)
-                index++;
+            word_count++; // Incrementa el contador de palabras
+            while (str[index] && str[index] != delimiter) // Avanza hasta el próximo delimitador o el final de la cadena
+                index++; // Avanza al siguiente carácter
         }
-        // If the current character is the delimiter, move to the next character
-        else if (str[index] == delimiter)
-            index++;
+        else if (str[index] == delimiter) // Si el carácter actual es el delimitador
+            index++; // Avanza al siguiente carácter
     }
-
-    // Return the total word count in the string
-    return (word_count);
+    return (word_count); // Retorna el número total de palabras encontradas
 }
 
-// Helper function to get the length of a word
+/* Helper function to get the length of a word */
 static size_t get_word_length(char const *str, char delimiter)
 {
-    size_t length;
+    size_t length; // Variable para almacenar la longitud de la palabra
 
-    // Initialize variable to store word length
-    length = 0;
-
-    // Calculate the length of the word until the delimiter or null terminator is encountered
-    while (str[length] && str[length] != delimiter)
-        length++;
-
-    // Return the length of the word
-    return (length);
+    length = 0; // Inicializa la longitud de la palabra
+    while (str[length] && str[length] != delimiter) // Itera hasta encontrar un delimitador o el final de la cadena
+        length++; // Incrementa la longitud de la palabra
+    return (length); // Retorna la longitud de la palabra encontrada
 }
 
-// Helper function to free the memory of an array of strings
+/* Helper function to free the memory of an array of strings */
 static void free_string_array(size_t size, char **array)
 {
-    // Free memory allocated for each string in the array
-    while (size > 0)
+    while (size > 0) // Itera sobre el arreglo de cadenas de caracteres
     {
-        size--;
-        free(array[size]);
+        size--; // Decrementa el índice
+        free(array[size]); // Libera la memoria de la cadena de caracteres actual
     }
-
-    // Free memory allocated for the array itself
-    free(array);
+    free(array); // Libera la memoria del arreglo de punteros
 }
 
-// Helper function to split a string into an array of substrings
-static char **split_string(char const *str, char delimiter, char **array, size_t word_count)
+/* Helper function to split a string into an array of substrings */
+static char **split_string(char const *str, char delimiter,
+                           char **array, size_t word_count)
 {
-    size_t str_index;
-    size_t array_index;
+    size_t str_index; // Índice para recorrer la cadena de caracteres
+    size_t array_index; // Índice para recorrer el arreglo de punteros
 
-    // Initialize variables to store string and array indices
-    str_index = 0;
-    array_index = 0;
-
-    // Iterate through the string to split it into substrings
-    while (array_index < word_count)
+    str_index = 0; // Inicializa el índice para recorrer la cadena de caracteres
+    array_index = 0; // Inicializa el índice para recorrer el arreglo de punteros
+    while (array_index < word_count) // Itera hasta alcanzar el número total de palabras
     {
-        // Skip over delimiter characters at the beginning of a substring
-        while (str[str_index] && str[str_index] == delimiter)
-            str_index++;
-
-        // Extract the substring for the current word and store it in the array
-        array[array_index] = ft_substr(str, str_index, get_word_length(&str[str_index], delimiter));
-
-        // If memory allocation fails, free previously allocated memory and return NULL
-        if (!array[array_index])
+        while (str[str_index] && str[str_index] == delimiter) // Avanza hasta el próximo delimitador o el final de la cadena
+            str_index++; // Avanza al siguiente carácter
+        array[array_index] = ft_substr(str, str_index, // Almacena la subcadena en el arreglo de punteros
+                                       get_word_length(&str[str_index], delimiter)); // Obtiene la longitud de la palabra
+        if (!array[array_index]) // Si no se pudo asignar memoria para la subcadena
         {
-            free_string_array(array_index, array);
-            return (0);
+            free_string_array(array_index, array); // Libera la memoria asignada hasta el momento
+            return (0); // Retorna NULL
         }
-
-        // Move to the next word in the string
-        while (str[str_index] && str[str_index] != delimiter)
-            str_index++;
-
-        // Move to the next index in the array
-        array_index++;
+        while (str[str_index] && str[str_index] != delimiter) // Avanza hasta el próximo delimitador o el final de la cadena
+            str_index++; // Avanza al siguiente carácter
+        array_index++; // Avanza al siguiente índice del arreglo de punteros
     }
-
-    // Set the last element of the array to NULL to mark the end
-    array[array_index] = NULL;
-
-    // Return the array of substrings
-    return (array);
+    array[array_index] = NULL; // Establece el último elemento del arreglo de punteros como NULL o '\0'
+    return (array); // Retorna el arreglo de punteros
 }
 
-/*Main function splits a string into an array of substrings 
-based on a specified delimiter character.*/
+/* Main function to split a string into an array of substrings */
 char **ft_split(char const *str, char delimiter)
 {
-    char **array;
-    size_t word_count;
+    char **array; // Arreglo de punteros para almacenar las subcadenas
+    size_t word_count; // Número total de palabras en la cadena
 
-    // Check if the input string is NULL
-    if (!str)
-        return (0);
-
-    // Count the number of words in the string
-    word_count = count_words(str, delimiter);
-
-    // Allocate memory for the array of strings
-    array = (char **)malloc(sizeof(char *) * (word_count + 1));
-
-    // Check if memory allocation fails
-    if (!array)
-        return (0);
-
-    // Split the string into an array of substrings
-    array = split_string(str, delimiter, array, word_count);
-
-    // Return the array of substrings
-    return (array);
+    if (!str) // Verifica si la cadena es nula
+        return (0); // Retorna NULL
+    word_count = count_words(str, delimiter); // Cuenta el número de palabras en la cadena
+    array = (char **)malloc(sizeof(char *) * (word_count + 1)); // Asigna memoria para el arreglo de punteros
+    if (!array) // Si no se pudo asignar memoria
+        return (0); // Retorna NULL
+    array = split_string(str, delimiter, array, word_count); // Divide la cadena en subcadenas y las almacena en el arreglo
+    return (array); // Retorna el arreglo de punteros
 }
 
 static void	ft_print_result(char const *s)

@@ -6,7 +6,7 @@
 /*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:06:55 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/14 20:10:28 by pamela           ###   ########.fr       */
+/*   Updated: 2024/04/15 12:43:31 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,7 +14,7 @@
 /*
 It counts the number of digits of a integer.
 */
-static int	ft_get_size(int n)
+static int	get_number_size(int n)
 {
 	int	size;
 
@@ -30,13 +30,13 @@ static int	ft_get_size(int n)
 }
 
 /*
-*It fills the result array with the integer converted to string
+*It fills the result string with the integer converted to string
 */
-static void	ft_fill_res(int size, int offset, int n, char *res)
+static void	fill_result_string(int size, int offset, int n, char *result)
 {
 	while (size > offset)
 	{
-		res[size - 1] = n % 10 + '0';
+		result[size - 1] = n % 10 + '0';
 		n = n / 10;
 		size--;
 	}
@@ -52,27 +52,27 @@ char	*ft_itoa(int n)
 {
 	int		offset;
 	int		size;
-	char	*res;
+	char	*result;
 
 	offset = 0;
-	size = ft_get_size(n);
-	res = (char *)malloc((size + 1) * sizeof(char));
-	if (!res)
+	size = get_number_size(n);
+	result = (char *)malloc((size + 1) * sizeof(char));
+	if (!result)
 		return (0);
 	if (n == -2147483648)
 	{
-		res[0] = '-';
-		res[1] = '2';
+		result[0] = '-';
+		result[1] = '2';
 		n = 147483648;
 		offset = 2;
 	}
 	if (n < 0)
 	{
-		res[0] = '-';
+		result[0] = '-';
 		offset = 1;
 		n = -n;
 	}
-	ft_fill_res(size, offset, n, res);
-	res[size] = '\0';
-	return (res);
+	fill_result_string(size, offset, n, result);
+	result[size] = '\0';
+	return (result);
 }
