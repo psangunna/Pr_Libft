@@ -6,10 +6,9 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:22:06 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/18 13:23:44 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/17 13:16:02 by psanguna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
 /*
 Check if the character is a printable ASCII character 
@@ -24,18 +23,3 @@ int	ft_isprint(int c)
 	}
 	return (0);
 }
-
-/*int	main(void)
-{
-	char	input;
-	int		result;
-	char	output;
-
-	input = 'A';
-	//input = '\t'
-	result = ft_isalnum(input);
-	output = result + '0';
-	write(1, &output, 1);
-	
-	return (0);
-}*/
