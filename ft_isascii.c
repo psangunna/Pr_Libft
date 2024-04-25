@@ -3,13 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 13:19:12 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/18 13:21:41 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:02:41 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 20:02:47 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+It checks if the character is a valid ASCII character
+*/
 int	ft_isascii(int c)
 {
 	if ((c >= 0 && c <= 127))

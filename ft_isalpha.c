@@ -3,13 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 13:11:28 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/18 13:12:09 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:03:06 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 20:03:10 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+It checks if the character is alphabetic
+*/
 int	ft_isalpha(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))

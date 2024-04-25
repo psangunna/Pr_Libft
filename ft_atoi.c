@@ -3,13 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 16:16:41 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/04 16:17:20 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:00:48 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 20:00:54 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+*Convert a string to an integer
+*/
 int	ft_atoi(const char *str)
 {
 	int	sig;

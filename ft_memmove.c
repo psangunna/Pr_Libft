@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 14:30:26 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/04 14:32:50 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/06 20:03:42 by psanguna          #+#    #+#             */
+/*   Updated: 2024/04/13 19:44:29 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,31 +15,29 @@
  *It copies 'n' characters from 'src' to 'dest', but for overlapping memory
  *blocks. It is a safer approach tha memcpy.
  */
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
-	unsigned char	*d;
 	unsigned char	*s;
+	unsigned char	*d;
+	size_t			i;
 
-	i = 0;
-	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
-	if (d < s || d >= (s + n))
+	d = (unsigned char *)dst;
+	if (!src && !dst)
+		return (0);
+	i = 0;
+	if (d > s)
 	{
-		while (i < n)
-		{
-			*d++ = *s++;
-			i++;
-		}
+		while (len-- > 0)
+			d[len] = s[len];
 	}
 	else
 	{
-		d += n;
-		s += n;
-		while (n--)
+		while (i < len)
 		{
-			*(d--) = *(s--);
+			d[i] = s[i];
+			i++;
 		}
 	}
-	return (dest);
+	return (dst);
 }

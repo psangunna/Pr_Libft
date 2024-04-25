@@ -3,13 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 13:12:34 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/18 13:16:43 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:06:14 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 20:06:18 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+It checks if the character is a digit
+*/
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')

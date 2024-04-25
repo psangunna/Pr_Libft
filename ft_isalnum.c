@@ -3,13 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 13:17:11 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/18 13:18:36 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:00:02 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 20:00:09 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+It checks if the character is alphanumeric
+*/
 int	ft_isalnum(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')

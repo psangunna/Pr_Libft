@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 13:30:19 by psanguna          #+#    #+#             */
-/*   Updated: 2024/03/18 15:58:33 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:01:12 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 20:01:19 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
+/*
+It calculates the length of a string
+*/
 size_t	ft_strlen(const char *str)
 {
 	size_t	counter;

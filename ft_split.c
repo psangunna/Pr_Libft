@@ -3,97 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 16:02:25 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/04 16:03:02 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 19:14:24 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 19:15:06 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
 
-/*This function counts the number of words in a string delimited 
-by a specified character.*/
-static size_t	count_words(char const *s, char c)
+/* Helper function to count the words in a string*/
+static size_t	count_words(char const *str, char delimiter)
 {
-	size_t	count;
-	int		in_word;
+	size_t	word_count;
+	size_t	index;
 
-	count = 0;
-	in_word = 0;
-	while (*s)
+	word_count = 0;
+	index = 0;
+	while (str[index])
 	{
-		if (*s == c)
+		if (str[index] != delimiter)
 		{
-			in_word = 0;
+			word_count++;
+			while (str[index] && str[index] != delimiter)
+				index++;
 		}
-		else
-		{
-			if (!in_word)
-			{
-				count++;
-				in_word = 1;
-			}
-		}
-		s++;
+		else if (str[index] == delimiter)
+			index++;
 	}
-	return (count);
+	return (word_count);
 }
 
-/*It deallocates memory allocated for the array of strings split*/
-static void	free_split(char **split, size_t i)
+/* Helper function to get the length of a word */
+static size_t	get_word_length(char const *str, char delimiter)
 {
-	while (i > 0)
-	{
-		free(split[i - 1]);
-		i--;
-	}
-	free (split);
+	size_t	length;
+
+	length = 0;
+	while (str[length] && str[length] != delimiter)
+		length++;
+	return (length);
 }
 
-/*It processes each word in the string s, delimited by the character c, 
-and stores them in the array split.*/
-static int	treat_word(const char *s, char c, char **split, size_t word_count)
+/* Helper function to free the memory of an array of strings */
+static void	free_string_array(size_t size, char **array)
 {
-	const char	*start;
-	size_t		len;
-	size_t		i;
-
-	i = 0;
-	while (*s && i < word_count)
+	while (size > 0)
 	{
-		while (*s == c)
-			s++;
-		start = s;
-		while (*s && *s != c)
-			s++;
-		len = s - start;
-		split[i] = ft_substr(start, 0, len);
-		if (!split[i])
+		size--;
+		free(array[size]);
+	}
+	free(array);
+}
+
+/* Helper function to split a string into an array of substrings */
+static char	**split_string(char const *str, char delimiter,
+		char **array, size_t word_count)
+{
+	size_t	str_index;
+	size_t	array_index;
+
+	str_index = 0;
+	array_index = 0;
+	while (array_index < word_count)
+	{
+		while (str[str_index] && str[str_index] == delimiter)
+			str_index++;
+		array[array_index] = ft_substr(str, str_index,
+				get_word_length(&str[str_index], delimiter));
+		if (!array[array_index])
 		{
-			free_split(split, i);
+			free_string_array(array_index, array);
 			return (0);
 		}
-		i++;
+		while (str[str_index] && str[str_index] != delimiter)
+			str_index++;
+		array_index++;
 	}
-	split[i] = NULL;
-	return (1);
+	array[array_index] = NULL;
+	return (array);
 }
 
-/*This function splits a string into an array of substrings 
-based on a specified delimiter character.*/
-char	**ft_split(char const *s, char c)
+/* Main function to split a string into an array of substrings */
+char	**ft_split(char const *str, char delimiter)
 {
-	size_t		word_count;
-	char		**split;
+	char	**array;
+	size_t	word_count;
 
-	if (!s || !c)
+	if (!str)
 		return (0);
-	word_count = count_words(s, c);
-	split = (char **)malloc((word_count + 1) * sizeof(char *));
-	if (!split)
+	word_count = count_words(str, delimiter);
+	array = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!array)
 		return (0);
-	if (!treat_word(s, c, split, word_count))
-		return (0);
-	return (split);
+	array = split_string(str, delimiter, array, word_count);
+	return (array);
 }

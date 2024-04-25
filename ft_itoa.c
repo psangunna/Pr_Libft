@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 16:03:26 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/04 16:03:49 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:06:55 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/15 12:43:31 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,66 +14,65 @@
 /*
 It counts the number of digits of a integer.
 */
-static int	count_digits(int n)
+static int	get_number_size(int n)
 {
-	int	num_digits;
+	int	size;
 
-	if (n == 0)
-	{
-		num_digits = 1;
-	}
-	else
-	{
-		num_digits = 0;
-	}
+	size = 0;
+	if (n <= 0)
+		size++;
 	while (n != 0)
 	{
-		num_digits++;
-		n /= 10;
+		n = n / 10;
+		size++;
 	}
-	return (num_digits);
+	return (size);
 }
 
 /*
-It allocates the integer in a string memory
+*It fills the result string with the integer converted to string
 */
-static void	append_digits(char *str, int n, int num_digits)
+static void	fill_result_string(int size, int offset, int n, char *result)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	if (n < 0)
+	while (size > offset)
 	{
-		str[i++] = '-';
-		num_digits++;
-		n = -n;
-	}
-	str[num_digits] = '\0';
-	j = num_digits - 1;
-	while (j >= i)
-	{
-		str[j] = '0' + (n % 10);
-		n /= 10;
-		j--;
+		result[size - 1] = n % 10 + '0';
+		n = n / 10;
+		size--;
 	}
 }
 
 /*
-function is used to convert an integer (of type int) into a string 
+Main function is used to convert an integer (of type int) into a string 
 (array of characters) representation. It stands for "integer to ASCII". 
 This function takes an integer as input and returns a dynamically allocated 
 string that represents that integer.
 */
 char	*ft_itoa(int n)
 {
-	int		num_digits;
-	char	*str;
+	int		offset;
+	int		size;
+	char	*result;
 
-	num_digits = count_digits(n);
-	str = (char *)malloc((num_digits + 1) * sizeof(char));
-	if (!str)
+	offset = 0;
+	size = get_number_size(n);
+	result = (char *)malloc((size + 1) * sizeof(char));
+	if (!result)
 		return (0);
-	append_digits(str, n, num_digits);
-	return (str);
+	if (n == -2147483648)
+	{
+		result[0] = '-';
+		result[1] = '2';
+		n = 147483648;
+		offset = 2;
+	}
+	if (n < 0)
+	{
+		result[0] = '-';
+		offset = 1;
+		n = -n;
+	}
+	fill_result_string(size, offset, n, result);
+	result[size] = '\0';
+	return (result);
 }

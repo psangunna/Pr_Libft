@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 16:06:29 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/04 16:06:43 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:05:50 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 20:05:54 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 /*
-function sends a string to a specified file descriptor using the write function.
+It sends a string to a specified file descriptor using the write function.
 */
 void	ft_putstr_fd(char *s, int fd)
 {

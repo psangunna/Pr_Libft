@@ -19,19 +19,14 @@ If memory allocation fails at any point, it returns NULL.
 */
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	len;
-	size_t	start;
-	size_t	end;
+	size_t	i;
 
 	if (!s1 || !set)
 		return (0);
-	len = 0;
-	start = 0;
-	end = ft_strlen(s1);
-	while (s1[start] != '\0' && ft_strchr(set, s1[start]))
-		start++;
-	while (end > start && ft_strchr(set, s1[end - 1]))
-		end--;
-	len = end - start;
-	return (ft_substr(s1, start, len));
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }

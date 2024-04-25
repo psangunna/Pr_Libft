@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: pamela <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 14:46:45 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/04 14:47:11 by psanguna         ###   ########.fr       */
+/*   Created: 2024/04/14 20:03:31 by pamela            #+#    #+#             */
+/*   Updated: 2024/04/14 20:03:36 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
+/*
+Compare two strings up to a specified length
+*/
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
 	while (n > 0 && (*str1 || *str2))

@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:51:08 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/04 17:01:58 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/09 10:13:47 by pamela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -31,6 +31,7 @@ typedef struct s_list
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
+int		ft_isascii(int c);
 int		ft_isalnum(int c);
 int		ft_isprint(int c);
 size_t	ft_strlen(const char *str);
