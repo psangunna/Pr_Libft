@@ -55,7 +55,7 @@ static void	ft_print_result(char const *s)
 
 static char	mapi(unsigned int i, char c)
 {
-	(void)i;//the variables is not used. This avoid to generate errores while it is being compiled.
+	(void)i;The variable is not used. This prevents errors during compilation.
 	if (c >= 'a' && c <= 'z')
 		return (c - 32);
 	else if (c >= 'A' && c <= 'Z')
