@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:09:39 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/12 11:43:15 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:09:31 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -51,30 +51,29 @@ int	main(void)
 
 	// Create a linked list with three nodes
 	head1 = (t_list *)malloc(sizeof(t_list)); 
-    if (head1 == NULL) 
+	if (head1 == NULL) 
 	{
 		printf("Error de memoria");
-    } 
+	}
 	head1->content = strdup("First");
-    head1->next = (t_list *)malloc(sizeof(t_list)); 
-    head1->next->content = strdup("Second"); 
-    head1->next->next = (t_list *)malloc(sizeof(t_list)); 
-    head1->next->next->content = strdup("Third"); 
-    head1->next->next->next = NULL; 
+	head1->next = (t_list *)malloc(sizeof(t_list)); 
+	head1->next->content = strdup("Second"); 
+	head1->next->next = (t_list *)malloc(sizeof(t_list)); 
+	head1->next->next->content = strdup("Third"); 
+	head1->next->next->next = NULL; 
 
 	// Print the content of each node before deletion 
-    printf("Content of nodes before deletion:\n"); 
-    current = head1; 
-    while (current)
+	printf("Content of nodes before deletion:\n"); 
+	current = head1; 
+	while (current)
 	{
 		printf("%s\n", (char *)current->content); 
-        current = current->next; 
-
-    }
-    // Call ft_lstclear to delete all nodes 
-    ft_lstclear(&head1, &del_content); 
-    // Print a message after deletion 
-    printf("\nNodes deleted successfully.\n");
+		current = current->next;
+	}
+	// Call ft_lstclear to delete all nodes 
+	ft_lstclear(&head1, &del_content); 
+	// Print a message after deletion 
+	 printf("\nNodes deleted successfully.\n");
 }
 
 static void		del_content(void *content)

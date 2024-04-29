@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:04:11 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/12 12:51:46 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:44:23 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -55,12 +55,7 @@ static void	ft_print_result(char const *s)
 
 static char	mapi(unsigned int i, char c)
 {
-	static int indexArray[11] = {0};
-
-	if (i > 10 || indexArray[i] == 1)
-		write(1, "wrong index\n", 12);
-	else
-		indexArray[i] = 1;
+	(void)i;//the variables is not used. This avoid to generate errores while it is being compiled.
 	if (c >= 'a' && c <= 'z')
 		return (c - 32);
 	else if (c >= 'A' && c <= 'Z')

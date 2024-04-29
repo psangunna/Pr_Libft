@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:07:09 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/12 11:27:57 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:05:23 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -81,25 +81,25 @@ int	main(void)
 	for (i=0; i<10; i++)
 	{
 		valor = (int *)malloc(sizeof(int)); // Allocate memory for an int
-        if (!valor)
-            return (0); // Memory allocation failed
-        *valor = i; // Store the value of i
-        node = CrearNodo(valor);
+		if (!valor)
+			return (0); // Memory allocation failed
+		*valor = i; // Store the value of i
+		node = CrearNodo(valor);
 		//printf("%d",  *(int *)node->content);
 		if (node)
 			ft_lstadd_front(&cab,node);
-			//printf("%d",  *(int *)cab->content);
+		//printf("%d",  *(int *)cab->content);
 	}
 	imprimirLista(cab);
 
 	// Free memory
-    t_list *temp;
-    while (cab)
-    {
-        temp = cab->next;
-        free(cab->content); // Free the memory allocated for the int value
-        free(cab); // Free the memory allocated for the node
-        cab = temp;
-    }
+	t_list *temp;
+ 	while (cab)
+	{
+		temp = cab->next;
+		free(cab->content); // Free the memory allocated for the int value
+		free(cab); // Free the memory allocated for the node
+		cab = temp;
+	}
 	return (0);
 }

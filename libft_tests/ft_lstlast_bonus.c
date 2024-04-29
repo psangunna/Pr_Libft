@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:08:03 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/12 11:32:45 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:01:28 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -47,30 +47,32 @@ int	main(void)
 	t_list *second;
 	t_list *third;
 
-    // Create some nodes for the linked list 
-    head1 = ft_lstnew("First"); 
-    second = ft_lstnew("Second"); 
-    third = ft_lstnew("Third"); 
+	// Create some nodes for the linked list 
+	head1 = ft_lstnew("First"); 
+	second = ft_lstnew("Second"); 
+	third = ft_lstnew("Third"); 
 
-    // Connect the nodes to form a linked list 
+	// Connect the nodes to form a linked list 
 	head1->next = second;
 	second->next = third;
 	third->next = NULL; 
-    // Call ft_lstlast to get the last node of the linked list 
-    last_node = ft_lstlast(head1); 
+	// Call ft_lstlast to get the last node of the linked list 
+  	last_node = ft_lstlast(head1); 
 	// Print the size of the linked list
 	printf("list:\n");
 	print_list(head1); 
-    if (last_node != NULL)
+	if (last_node != NULL)
 	{
 		printf("Content of the last node: %s\n", (char *)last_node->content); 
-    } else {
+	}
+	else
+	{
 		printf("The list is empty.\n"); 
-    }
-    // Free memory allocated for the linked list 
-    free(head1); 
-    free(second); 
-    free(third);
+	}
+	// Free memory allocated for the linked list 
+	free(head1); 
+	free(second); 
+	free(third);
 	return (0);
 }
 

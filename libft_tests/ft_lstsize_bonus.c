@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:07:41 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/12 11:33:03 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:59:50 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -48,23 +48,23 @@ int	main(void)
 	t_list	*third;
 	int		sizes;
 	// Create some nodes for the linked list 
-    head1 = ft_lstnew("First"); 
-    second = ft_lstnew("Second"); 
-    third = ft_lstnew("Third"); 
-    // Connect the nodes to form a linked list 
-    head1->next = second; 
-    second->next = third; 
+	head1 = ft_lstnew("First"); 
+	second = ft_lstnew("Second"); 
+	third = ft_lstnew("Third"); 
+	// Connect the nodes to form a linked list 
+	head1->next = second; 
+	second->next = third; 
 	third->next = NULL; 
-    // Call the function ft_lstsize to get the size of the linked list 
+	// Call the function ft_lstsize to get the size of the linked list 
 	sizes = ft_lstsize(head1);
-    // Print the size of the linked list
+	//Print the size of the linked list
 	printf("list:\n");
 	print_list(head1); 
-    printf("Size of the linked list: %d\n", sizes);
-    // Free memory allocated for the linked list 
-    free(head1);
-    free(second);
-    free(third);
+	printf("Size of the linked list: %d\n", sizes);
+	// Free memory allocated for the linked list 
+	free(head1);
+ 	free(second);
+	free(third);
 	return (0);
 }
 

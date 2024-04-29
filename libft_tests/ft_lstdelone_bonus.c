@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:09:18 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/12 11:40:07 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:10:45 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -40,18 +40,19 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 
 int	main(void)
 {
-    t_list	*head2 = (t_list *)malloc(sizeof(t_list)); 
-    if (head2== NULL) 
+	t_list	*head2 = (t_list *)malloc(sizeof(t_list)); 
+
+	if (head2== NULL)
 	{
 		printf("Error de memoria");
-    } 
-    head2->content = strdup("Hey, there!"); 
-    head2->next = NULL; 
-    // Print the content of the node before deletion
+	} 
+	head2->content = strdup("Hey, there!"); 
+	head2->next = NULL; 
+	// Print the content of the node before deletion
 	printf("Content of the node before deletion: %s\n", (char *)head2->content);
-    // Call ft_lstdelone to delete the node 
+	//Call ft_lstdelone to delete the node 
 	ft_lstdelone(head2, del_content); 
-    // Print a message after deletion 
+	// Print a message after deletion 
 	printf("Node deleted successfully.\n");
 }
 

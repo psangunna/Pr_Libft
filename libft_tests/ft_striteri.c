@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:05:04 by psanguna          #+#    #+#             */
-/*   Updated: 2024/04/12 13:01:04 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:43:52 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -52,12 +52,7 @@ static void		ft_print_result(char const *s)
 
 static void		iter(unsigned int i, char *c)
 {
-	static int indexArray[11] = {0};
-
-	if (i > 10 || indexArray[i] == 1)
-		write(1, "wrong index\n", 12);
-	else
-		indexArray[i] = 1;
+	(void)i;
 	if (*c >= 'a' && *c <= 'z')
 		*c = *c - 32;
 	else if (*c >= 'A' && *c <= 'Z')

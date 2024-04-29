@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:10:21 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/15 16:51:19 by pamela           ###   ########.fr       */
+/*   Updated: 2024/04/29 10:56:18 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -65,43 +65,36 @@ int	main()
 {
 	t_list *head1;
 	t_list *current;
-		// Create a linked list with three nodes 
-	/*head1 = ft_lstnew((void *)'a');
-	ft_lstadd_back(&head1, ft_lstnew((void *)'b')); 
-    ft_lstadd_back(&head1, ft_lstnew((void *)'c')); 
-    // Print the original list 
-	printf("Original list:\n"); */
-	head1 = (t_list *)malloc(sizeof(t_list)); 
-    if (head1 == NULL) 
+
+	head1 = (t_list *)malloc(sizeof(t_list));
+	if (head1 == NULL)
 	{
 		printf("Error de memoria");
-    }
+	}
 	head1->content = strdup("First");
-    head1->next = (t_list *)malloc(sizeof(t_list)); 
-    head1->next->content = strdup("Second"); 
-    head1->next->next = (t_list *)malloc(sizeof(t_list)); 
-    head1->next->next->content = strdup("Third"); 
-    head1->next->next->next = NULL;
-    current = head1; 
-    while (current != NULL)
+	head1->next = (t_list *)malloc(sizeof(t_list)); 
+	head1->next->content = strdup("Second"); 
+	head1->next->next = (t_list *)malloc(sizeof(t_list)); 
+	head1->next->next->content = strdup("Third"); 
+	head1->next->next->next = NULL;
+	current = head1;
+	while (current != NULL)
 	{
-		printf("%s\n", (char *)current->content); 
-        current = current->next; 
-
-    } 
-    // Create a new list by adding one to each element of the original list 
-    t_list *new_list = ft_lstmap(head1, (void *)&change_list, (void *)&del_content); 
-    // Print the new list 
-    printf("\nNew list after mapping:\n"); 
-    current = new_list; 
-    while (current != NULL)
-	{ 
-        printf("%s\n", (char *)current->content); 
-        current = current->next;
-    }
-    // Free memory allocated for both lists 
-    free_list(head1);
-    free_list(new_list);
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	// Create a new list by adding one to each element of the original list 
+	t_list *new_list = ft_lstmap(head1, (void *)&change_list, (void *)&del_content); 
+	// Print the new list 
+	printf("\nNew list after mapping:\n"); 
+	current = new_list;
+	while (current != NULL)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	// Free memory allocated for both listsfree_list(head1);
+	free_list(new_list);
 	return (0);
 }
 
@@ -121,6 +114,7 @@ static void	ft_lstadd_back(t_list **lst, t_list *new)
 		current->next = new;
 	}
 }
+
 static t_list	*ft_lstnew(void *content)
 {
 	t_list	*new_node;
@@ -193,7 +187,7 @@ static void	free_list(t_list *head)
 	t_list	*temp;
 
 	current = head; 
-    while (current != NULL)
+	while (current != NULL)
 	{
 		temp = current;
 		current = current->next;

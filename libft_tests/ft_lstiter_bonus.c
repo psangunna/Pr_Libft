@@ -6,7 +6,7 @@
 /*   By: psanguna <psanguna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:09:58 by pamela            #+#    #+#             */
-/*   Updated: 2024/04/12 11:57:31 by psanguna         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:57:48 by pamela           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -48,19 +48,19 @@ int	main(void)
 	t_list *head1;
 	
 	head1 = (t_list *)malloc(sizeof(t_list)); 
-    if (head1 == NULL) 
+	if (head1 == NULL) 
 	{
 		printf("Error de memoria");
-    }
+	}
 	head1->content = strdup("First");
-    head1->next = (t_list *)malloc(sizeof(t_list)); 
-    head1->next->content = strdup("Second"); 
-    head1->next->next = (t_list *)malloc(sizeof(t_list)); 
-    head1->next->next->content = strdup("Third"); 
-    head1->next->next->next = NULL;
-    // Call ft_lstiter to apply print_content to each node's content 
-    printf("Contents of the nodes:\n"); 
-    ft_lstiter(head1, &print_content); 
+	head1->next = (t_list *)malloc(sizeof(t_list)); 
+	head1->next->content = strdup("Second"); 
+	head1->next->next = (t_list *)malloc(sizeof(t_list)); 
+	head1->next->next->content = strdup("Third"); 
+	head1->next->next->next = NULL;
+	// Call ft_lstiter to apply print_content to each node's content 
+	printf("Contents of the nodes:\n"); 
+	ft_lstiter(head1, &print_content); 
 	// Liberar la memoria de la lista enlazada
 	ft_lstclear(&head1, &del_content);
 }
