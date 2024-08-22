@@ -12,7 +12,6 @@ __libft__ is a custom C library that implements various standard functions from 
 - [Bonus](#bonus)
 	- [Bonus Feactures](#b_feactures)
 	- [Compilation for Bonus Part](#b_compilation)
-	- [Usage for Bonus Part](#b_usage)
 - [Acknowledgements](#ack)
 ## _Aim_ <a name="aim"></a>
 This project aims to enhance the understanding of the C language and its standards, providing a fundamental tool for future projects.
@@ -119,7 +118,7 @@ Additional functions and features beyond the mandatory requirements.
     - **Description**: Allocates (with malloc) and returns a new element. The variable **content** is initialized with the value of the parameter **content**. The variable next is initialized to **NULL**.
   - **_ft_lstadd_front_** - Adds an element to the beginning of a list.
     - **Prototype**: **_void ft_lstadd_front(t_list **lst, t_list *new)_**;
-    - **Description**: Adds the element new at the beginning of the list.
+    - **Description**: Adds the element **new** at the beginning of the list.
   - **_ft_lstsize_** - Counts the number of elements in a list.
     - **Prototype**: **_int ft_lstsize(t_list *lst)_**;
     - **Description**: Counts and returns the number of elements in the list.
@@ -128,7 +127,7 @@ Additional functions and features beyond the mandatory requirements.
     - **Description**: Returns the last element of the list.
   -**_ft_lstadd_back_** - Adds an element to the end of a list.
     - **Prototype**: **_void ft_lstadd_back(t_list **lst, t_list *new)_**;
-    - **Description**: Adds the element new at the end of the list.
+    - **Description**: Adds the element **new** at the end of the list.
   - **_ft_lstdelone_** - Deletes an element from a list.
     - **Prototype**: **_void ft_lstdelone(t_list *lst, void (*del)(void *))_**;
     - **Description**: Frees the memory of the element passed as a parameter using the function del and free. The memory of **next** is not freed.
@@ -140,10 +139,10 @@ Additional functions and features beyond the mandatory requirements.
     - **Description**: Iterates over the list **lst** and applies the function **f** to the content of each element.
   - **_ft_lstmap_** - Applies a function to each element of a list to create a new list.
     - **Prototype**: **_t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))_**;
-    - **Description**: Iterates over the list lst and applies the function f to the content of each element to create a new list. The del function is used to delete the content of an element if needed during the allocation.
-## Bonus Compilation <a name="b_compilation"></a>
+    - **Description**: Iterates over the list **lst** and applies the function f to the content of each element to create a **new** list. The del function is used to delete the content of an element if needed during the allocation.
+## Compilation for Bonus Part<a name="b_compilation"></a>
 If you want to include the bonus functions (linked list operations) in your library, you can use the following command:
 - **make bonus**: Compiles the standard library along with the bonus functions and generates libft.a.
-The bonus functions will be compiled and included in libft.a, making them available for use in your projects.
+The bonus functions will be compiled and included in **libft.a**, making them available for use in your projects.
 ## *Acknowledgements* <a name="ack"></a>
 This project is part of the curriculum at [42 Madrid](https://www.42madrid.com/). Thanks to the 42 Network for providing the resources and guidance to complete this project.
