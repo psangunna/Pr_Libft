@@ -17,7 +17,7 @@ __libft__ is a custom C library that implements various standard functions from 
 This project aims to enhance the understanding of the C language and its standards, providing a fundamental tool for future projects.
 ## Features <a name="features"></a>
 The library includes the following functions from the standard C library, reimplemented from scratch with a **ft_** prefix:  
-- ### Part 1 - libc Functions <a name="prt1"></a>.
+- ### Part 1 - libc Functions <a name="prt1"></a>
   - **Character Checks**:
     - **_ft_isalpha_** - Checks if a character is alphabetic.
     - **_ft_isdigit_** - Checks if a character is a digit.
@@ -46,27 +46,27 @@ The library includes the following functions from the standard C library, reimpl
     - **_ft_tolower_** - Converts a character to lowercase.
   - **Memory Allocation**:
     - **_ft_calloc_** - Allocates memory initialized to zero.
-- ### Part 2 - Additional Functions <a name="prt2"></a>.
+- ### Part 2 - Additional Functions <a name="prt2"></a>
   In this second part, a set of functions is developed that are either not part of the libc library or are implemented differently.  
     - **String Manipulation**:
       - **_ft_substr_** - Creates a substring from a given string.
         - **Prototype**: **_char *ft_substr(char const *s, unsigned int start, size_t len)_**;
-        - **Description**: Allocates (with malloc) and returns a substring from the string **s**. The substring begins at index **start** and is of maximum length **len**.
+        - **Description**: Allocates (with **malloc**) and returns a substring from the string **s**. The substring begins at index **start** and is of maximum length **len**.
       - **_ft_strjoin_** - Joins two strings into a new string.
         - **Prototype**:**_char *ft_strjoin(char const *s1, char const *s2)_**;
-        - **Description**: Allocates (with malloc) and returns a new string, which is the result of the concatenation of **s1** and **s2**.
+        - **Description**: Allocates (with **malloc**) and returns a new string, which is the result of the concatenation of **s1** and **s2**.
       - **_ft_strtrim_** - Trims characters from the beginning and end of a string.
         - **Prototype**: **_char *ft_strtrim(char const *s1, char const *set)_**;
-        - **Description**: Allocates (with malloc) and returns a copy of **s1** with the characters specified in **set** removed from the beginning and the end.
+        - **Description**: Allocates (with **malloc**) and returns a copy of **s1** with the characters specified in **set** removed from the beginning and the end.
       - **_ft_split_** - Splits a string into an array of strings based on a delimiter.
         - **Prototype**: char **ft_split(char const *s, char c)_**;
-        - **Description**: Allocates (with malloc) and returns an array of strings obtained by splitting **s** using the character **c** as a delimiter. The array ends with a NULL pointer.
+        - **Description**: Allocates (with **malloc**) and returns an array of strings obtained by splitting **s** using the character **c** as a delimiter. The array ends with a NULL pointer.
       - **_ft_itoa_** - Converts an integer to a string.
         - **Prototype**: **_char *ft_itoa(int n)_**;
-        - **Description**: Allocates (with malloc) and returns a string representing the integer received as an argument. Negative numbers are handled correctly.
+        - **Description**: Allocates (with **malloc**) and returns a string representing the integer received as an argument. Negative numbers are handled correctly.
       - **_ft_strmapi_** - Applies a function to each character of a string to create a new string.
         - **Prototype**: **_char *ft_strmapi(char const *s, char (*f)(unsigned int, char))_**;
-        - **Description**: Applies the function **f** to each character of the string **s** to create a new string (with malloc) resulting from successive applications of **f**.
+        - **Description**: Applies the function **f** to each character of the string **s** to create a new string (with **malloc**) resulting from successive applications of **f**.
       - **_ft_striteri_**  - Applies a function to each character of a string, modifying the string in place.
         - **Prototype**: **_void ft_striteri(char *s, void (*f)(unsigned int, char*))_**;
         - **Description**: Applies the function **f** to each character of the string **s**, passing its index as the first argument. Each character is passed by address to **f** to be modified if necessary.
@@ -115,7 +115,7 @@ Additional functions and features beyond the mandatory requirements.
 - **Linked List Functions**:
   - **_ft_lstnew_** - Creates a new list element.
     - **Prototype**: **_t_list *ft_lstnew(void *content)_**;
-    - **Description**: Allocates (with malloc) and returns a new element. The variable **content** is initialized with the value of the parameter **content**. The variable next is initialized to **NULL**.
+    - **Description**: Allocates (with **malloc**) and returns a new element. The variable **content** is initialized with the value of the parameter **content**. The variable next is initialized to **NULL**.
   - **_ft_lstadd_front_** - Adds an element to the beginning of a list.
     - **Prototype**: **_void ft_lstadd_front(t_list **lst, t_list *new)_**;
     - **Description**: Adds the element **new** at the beginning of the list.
