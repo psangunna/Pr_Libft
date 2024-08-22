@@ -13,7 +13,7 @@ __libft__ is a custom C library that implements various standard functions from 
 This project aims to enhance the understanding of the C language and its standards, providing a fundamental tool for future projects.
 ### Features <a name="features"></a>
 The library includes the following functions from the standard C library, reimplemented from scratch with a **ft_** prefix:  
-- #### Part 1 - libc Functions.
+- #### Part 1 - libc Functions <a name="prt1"></a>.
   - **Character Checks**:
     - **_ft_isalpha_** - Checks if a character is alphabetic.
     - **_ft_isdigit_** - Checks if a character is a digit.
@@ -42,43 +42,43 @@ The library includes the following functions from the standard C library, reimpl
     - **_ft_tolower_** - Converts a character to lowercase.
   - **Memory Allocation**:
     - **_ft_calloc_** - Allocates memory initialized to zero.
-- #### Part 2 - Additional Functions.
+- #### Part 2 - Additional Functions <a name="prt2"></a>.
   In this second part, a set of functions is developed that are either not part of the libc library or are implemented differently.  
     - **String Manipulation**:
       - **_ft_substr - Creates a substring from a given string.
         - **Prototype**: **_char *ft_substr(char const *s, unsigned int start, size_t len)_**;
-        - **Description**: Allocates (with malloc) and returns a substring from the string s. The substring begins at index start and is of maximum length len.
+        - **Description**: Allocates (with malloc) and returns a substring from the string **s**. The substring begins at index **start** and is of maximum length **len**.
       - **_ft_strjoin_** - Joins two strings into a new string.
         - **Prototype**:**_char *ft_strjoin(char const *s1, char const *s2)_**;
-        - **Description**: Allocates (with malloc) and returns a new string, which is the result of the concatenation of s1 and s2.
+        - **Description**: Allocates (with malloc) and returns a new string, which is the result of the concatenation of **s1** and **s2**.
       - **_ft_strtrim_** - Trims characters from the beginning and end of a string.
         - **Prototype**: **_char *ft_strtrim(char const *s1, char const *set)_**;
-        - **Description**: Allocates (with malloc) and returns a copy of s1 with the characters specified in set removed from the beginning and the end.
+        - **Description**: Allocates (with malloc) and returns a copy of **s1** with the characters specified in **set** removed from the beginning and the end.
       - **_ft_split_** - Splits a string into an array of strings based on a delimiter.
         - **Prototype**: char **ft_split(char const *s, char c)_**;
-        - **Description**: Allocates (with malloc) and returns an array of strings obtained by splitting s using the character c as a delimiter. The array ends with a NULL pointer.
+        - **Description**: Allocates (with malloc) and returns an array of strings obtained by splitting **s** using the character **c** as a delimiter. The array ends with a NULL pointer.
       - **_ft_itoa_** - Converts an integer to a string.
         - **Prototype**: **_char *ft_itoa(int n)_**;
         - **Description**: Allocates (with malloc) and returns a string representing the integer received as an argument. Negative numbers are handled correctly.
       - **_ft_strmapi_** - Applies a function to each character of a string to create a new string.
         - **Prototype**: **_char *ft_strmapi(char const *s, char (*f)(unsigned int, char))_**;
-        - **Description**: Applies the function f to each character of the string s to create a new string (with malloc) resulting from successive applications of f.
-      - **_ft_striteri_** - Applies a function to each character of a string, modifying the string in place.
+        - **Description**: Applies the function **f** to each character of the string **s** to create a new string (with malloc) resulting from successive applications of **f**.
+      - **_ft_striteri_**  - Applies a function to each character of a string, modifying the string in place.
         - **Prototype**: **_void ft_striteri(char *s, void (*f)(unsigned int, char*))_**;
-        - **Description**: Applies the function f to each character of the string s, passing its index as the first argument. Each character is passed by address to f to be modified if necessary.
+        - **Description**: Applies the function **f** to each character of the string **s**, passing its index as the first argument. Each character is passed by address to **f** to be modified if necessary.
     - **File Descriptor Output**:
       - **_ft_putchar_fd_** - Outputs a character to a given file descriptor.
         - **Prototype**: **_void ft_putchar_fd(char c, int fd)_**;
-        - **Description**: Outputs the character c to the given file descriptor.
+        - **Description**: Outputs the character **c** to the given file descriptor.
       - **_ft_putstr_fd_** - Outputs a string to a given file descriptor.
         - **Prototype**: **_void ft_putstr_fd(char *s, int fd)_**;
-        - **Description**: Outputs the string s to the given file descriptor.
+        - **Description**: Outputs the string **s** to the given file descriptor.
       - **_ft_putendl_fd_** - Outputs a string followed by a newline to a given file descriptor.
         - **Prototype**: **_void ft_putendl_fd(char *s, int fd)_**;
-        - **Description**: Outputs the string s to the given file descriptor, followed by a newline.
+        - **Description**: Outputs the string **s** to the given file descriptor, followed by a newline.
       - **_ft_putnbr_fd_** - Outputs an integer to a given file descriptor.
         - **Prototype**: **_void ft_putnbr_fd(int n, int fd)_**;
-        - **Description**: Outputs the integer n to the given file descriptor.
+        - **Description**: Outputs the integer **n** to the given file descriptor.
 ### Requirements <a name="requirements"></a>
 - All functions are compiled with the **-Wall -Werror -Wextra** options.
 - The library is compiled using the **ar** command, without using **libtool**.
